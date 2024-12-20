@@ -1,17 +1,17 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+"use client";
+
+import Footer from "@/src/components/Footer";
+import Header from "@/src/components/Header";
 import React from "react";
 
 const Home: React.FC = () => {
   return (
     <div className="">
-      <Header/>
-      <main className="">
-        /* Add your home page content here
-      </main>
-      <Footer/>
+      <Header />
+      <main className="">Welcome to the home page</main>
+      <Footer />
     </div>
   );
-}
+};
 
 export default Home;

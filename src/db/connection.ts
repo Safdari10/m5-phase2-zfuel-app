@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 
-const URI ='mongodb://localhost:27017/express-mongo';
+const URI ='mongodb://localhost:27017/zfuel';
 
 const connectDB = async () => {
     try {
