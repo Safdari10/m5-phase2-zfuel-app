@@ -78,3 +78,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.bg-split {
+  position: relative;
+  background: white;
+}
+
+.bg-split::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, #F36F21, #FFC42E);
+  clip-path: path('M0 100% Q 50% 50% 100% 0 L 100% 100% L 0 100% Z');
+  z-index: 0;
+}
