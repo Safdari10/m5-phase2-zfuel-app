@@ -37,7 +37,7 @@ export default function SearchBar({ onLocationSelect }: SearchBarProps) {
   };
 
   return (
-    <div className="relative w-full transform transition-transform hover:-translate-y-2 hover:rotate-1">
+    <div className="relative w-full transform transition-transform">
       <div className="absolute inset-0 bg-black/20 rounded-3xl blur-xl transform scale-95 translate-y-4" />
       <Input 
         value={address}

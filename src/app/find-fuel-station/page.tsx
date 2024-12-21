@@ -11,21 +11,32 @@ export default function FindFuelStation() {
   const [stations, setStations] = useState<any[]>([]);
   const [selectedStation, setSelectedStation] = useState<any>(null);
   const [mapCenter, setMapCenter] = useState<[number, number]>([174.7645, -36.8509]); // Auckland
+  const [error, setError] = useState<string | null>(null);
 
   const handleLocationSelect = async (lat: number, lng: number) => {
-    setMapCenter([lng, lat]);
-    
     try {
+      setError(null); // Clear any previous errors
+      setMapCenter([lng, lat]);
+      
       // Fetch nearby stations
       const response = await fetch(`/api/stations?lat=${lat}&lng=${lng}`);
       if (!response.ok) {
         throw new Error('Failed to fetch stations');
       }
+      
       const data = await response.json();
-      setStations(data);
+      
+      // Check if we have stations in the response
+      if (data.stations) {
+        setStations(data.stations);
+      } else {
+        setStations([]);
+      }
+      
     } catch (error) {
-      console.error('Error fetching stations:', error);
-      // You might want to add error handling UI here
+      console.error('Error:', error);
+      setError('Failed to fetch stations. Please try again.');
+      setStations([]);
     }
   };
 
@@ -59,19 +70,30 @@ export default function FindFuelStation() {
             <div className="w-1/2 flex flex-col items-end">
               <div className="w-[65%] mb-8">
                 <SearchBar onLocationSelect={handleLocationSelect} />
+                {error && (
+                  <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+                    {error}
+                  </div>
+                )}
               </div>
 
               <div className="w-[65%] space-y-4 overflow-y-auto">
-                {selectedStation ? (
-                  <StationCard {...selectedStation} />
+                {stations.length > 0 ? (
+                  selectedStation ? (
+                    <StationCard {...selectedStation} />
+                  ) : (
+                    stations.map((station) => (
+                      <StationCard 
+                        key={station._id} 
+                        {...station} 
+                        onClick={() => setSelectedStation(station)}
+                      />
+                    ))
+                  )
                 ) : (
-                  stations.map((station) => (
-                    <StationCard 
-                      key={station._id} 
-                      {...station} 
-                      onClick={() => setSelectedStation(station)}
-                    />
-                  ))
+                  <div className="text-center p-4 text-gray-500">
+                    No stations found in this area
+                  </div>
                 )}
               </div>
             </div>
