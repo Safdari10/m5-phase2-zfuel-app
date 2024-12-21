@@ -12,21 +12,27 @@ export default function FindFuelStation() {
   const [selectedStation, setSelectedStation] = useState<any>(null);
   const [mapCenter, setMapCenter] = useState<[number, number]>([174.7645, -36.8509]); // Auckland
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
 
   const handleLocationSelect = async (lat: number, lng: number) => {
     try {
-      setError(null); // Clear any previous errors
+      setError(null);
+      setLoading(true);
       setMapCenter([lng, lat]);
       
-      // Fetch nearby stations
-      const response = await fetch(`/api/stations?lat=${lat}&lng=${lng}`);
+      console.log('Fetching stations for:', { lat, lng }); // Debug log
+      
+      const response = await fetch(`/find-fuel-station/api/stations?lat=${lat}&lng=${lng}`);
+      
       if (!response.ok) {
+        const errorData = await response.text();
+        console.error('API Error Response:', errorData);
         throw new Error('Failed to fetch stations');
       }
-      
+
       const data = await response.json();
-      
-      // Check if we have stations in the response
+      console.log('API Response:', data);
+
       if (data.stations) {
         setStations(data.stations);
       } else {
@@ -35,8 +41,10 @@ export default function FindFuelStation() {
       
     } catch (error) {
       console.error('Error:', error);
-      setError('Failed to fetch stations. Please try again.');
+      setError(error instanceof Error ? error.message : 'Failed to fetch stations');
       setStations([]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -75,6 +83,11 @@ export default function FindFuelStation() {
                     {error}
                   </div>
                 )}
+                {loading && (
+                  <div className="mt-4 text-center">
+                    Loading stations...
+                  </div>
+                )}
               </div>
 
               <div className="w-[65%] space-y-4 overflow-y-auto">
@@ -90,7 +103,7 @@ export default function FindFuelStation() {
                       />
                     ))
                   )
-                ) : (
+                ) : !loading && (
                   <div className="text-center p-4 text-gray-500">
                     No stations found in this area
                   </div>

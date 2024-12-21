@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import { mongoose } from '@/db/connection';
 
 const StationSchema = new mongoose.Schema({
   name: String,
@@ -7,10 +7,10 @@ const StationSchema = new mongoose.Schema({
     type: {
       type: String,
       enum: ['Point'],
-      default: 'Point'
+      required: true
     },
     coordinates: {
-      type: [Number], // [longitude, latitude]
+      type: [Number],
       required: true
     }
   },
@@ -25,12 +25,11 @@ const StationSchema = new mongoose.Schema({
     Sat: String
   },
   services: [String]
+}, {
+  collection: 'stations'
 });
 
-// Create a geospatial index
-StationSchema.index({ location: '2dsphere' });
-
-// Check if the model exists before creating a new one
+// Create the model only if it doesn't exist
 const Station = mongoose.models.Station || mongoose.model('Station', StationSchema);
 
 export default Station;

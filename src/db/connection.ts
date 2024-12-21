@@ -1,58 +1,60 @@
 import mongoose from 'mongoose';
 
-interface GlobalMongoose {
-  conn: typeof mongoose | null;
-  promise: Promise<typeof mongoose> | null;
+const MONGODB_URI = 'mongodb://127.0.0.1:27017/ZFUEL';
+
+if (!MONGODB_URI) {
+  throw new Error('Please define the MONGODB_URI environment variable inside .env');
 }
 
-declare global {
-  var mongoose: GlobalMongoose | undefined;
-}
-
-const URI = 'mongodb://localhost:27017/zfuel';
-
-// Add caching mechanism
 let cached = global.mongoose;
 
 if (!cached) {
   cached = global.mongoose = { conn: null, promise: null };
 }
 
-const connectDB = async () => {
-  // If we have a connection, return it
+async function connectDB() {
   if (cached.conn) {
     return cached.conn;
   }
 
-  // If we don't have a promise to connect, create one
-  if (!cached.promise) {
+  try {
     const opts = {
       bufferCommands: false,
+      maxPoolSize: 10,
+      serverSelectionTimeoutMS: 5000,
+      family: 4,
     };
 
-    try {
-      cached.promise = mongoose.connect(URI, opts);
-      cached.conn = await cached.promise;
-      console.log('MongoDB connected successfully');
-      return cached.conn;
-    } catch (error) {
-      cached.promise = null;
-      if (error instanceof Error) {
-        console.error("MongoDB connection error:", error.message);
-      } else {
-        console.error("MongoDB connection error:", error);
+    console.log('Connecting to MongoDB at:', MONGODB_URI);
+    cached.conn = await mongoose.connect(MONGODB_URI, opts);
+    
+    // Create indexes after connection
+    const Station = mongoose.models.Station || mongoose.model('Station', new mongoose.Schema({
+      location: {
+        type: {
+          type: String,
+          enum: ['Point'],
+          required: true
+        },
+        coordinates: {
+          type: [Number],
+          required: true
+        }
       }
-      throw error; // Let the calling code handle the error instead of exiting
-    }
-  }
+    }));
 
-  try {
-    cached.conn = await cached.promise;
+    // Ensure index exists
+    await Station.collection.createIndex({ location: '2dsphere' });
+    
+    console.log('Connected to MongoDB successfully');
     return cached.conn;
-  } catch (error) {
-    cached.promise = null;
-    throw error;
-  }
-};
 
+  } catch (e) {
+    console.error('MongoDB connection error:', e);
+    throw e;
+  }
+}
+
+// Export mongoose instance and connection function
+export { mongoose };
 export default connectDB;
