@@ -1,21 +1,21 @@
 "use client";
 
-import { Card } from "@/components/ui/card";
-import { MapPin, Phone, Clock, ShoppingBag, Fuel, Car, Wind } from "lucide-react";
+import React from "react";
+import { ShoppingBag, Fuel, Car, Wind } from "lucide-react";
 
 interface StationCardProps {
   name: string;
   address: string;
   phone: string;
-  hours: string;
+  hours: { [key: string]: string };
   services: string[];
 }
 
 const serviceIcons: Record<string, React.ReactNode> = {
-  Shop: <ShoppingBag className="w-4 h-4" />,
-  Fuel: <Fuel className="w-4 h-4" />,
-  "Car Wash": <Car className="w-4 h-4" />,
-  Air: <Wind className="w-4 h-4" />,
+  Shop: <ShoppingBag className="w-5 h-5 text-white" />,
+  Fuel: <Fuel className="w-5 h-5 text-white" />,
+  "Car Wash": <Car className="w-5 h-5 text-white" />,
+  Air: <Wind className="w-5 h-5 text-white" />,
 };
 
 export default function StationCard({
@@ -26,40 +26,52 @@ export default function StationCard({
   services,
 }: StationCardProps) {
   return (
-    <Card className="p-8 hover:shadow-lg transition-shadow rounded-xl">
-      <h2 className="text-2xl font-bold mb-6">{name}</h2>
+    <div className="bg-gradient-to-r from-[#F36F21] to-[#FFC42E] p-8 rounded-3xl text-white relative overflow-hidden">
+      {/* Decorative corner element */}
+      <div className="absolute bottom-0 right-0 w-32 h-32 bg-white/10 transform rotate-45 translate-x-12 translate-y-12" />
       
-      <div className="space-y-4">
-        <div className="flex items-start gap-4">
-          <MapPin className="w-6 h-6 text-gray-500 mt-1" />
-          <p className="text-lg">{address}</p>
-        </div>
-        
-        <div className="flex items-start gap-4">
-          <Phone className="w-6 h-6 text-gray-500 mt-1" />
-          <p className="text-lg">{phone}</p>
-        </div>
-        
-        <div className="flex items-start gap-4">
-          <Clock className="w-6 h-6 text-gray-500 mt-1" />
-          <p className="text-lg">{hours}</p>
-        </div>
-
-        <div className="pt-6 border-t">
-          <h3 className="font-semibold text-xl mb-4">Available Services</h3>
-          <div className="flex flex-wrap gap-3">
+      <h2 className="text-3xl font-bold mb-2">{name}</h2>
+      <p className="text-lg mb-8">{address}</p>
+      
+      <div className="flex justify-between mb-6">
+        <div>
+          <p className="text-xl font-semibold mb-4">Services Offered</p>
+          <div className="flex gap-4">
             {services.map((service) => (
-              <div
-                key={service}
-                className="flex items-center gap-2 bg-gray-100 px-4 py-2 rounded-full text-base"
-              >
-                {serviceIcons[service]}
-                {service}
+              <div key={service} className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
+                {React.cloneElement(serviceIcons[service] as React.ReactElement, {
+                  className: "w-7 h-7 text-white"
+                })}
               </div>
             ))}
           </div>
         </div>
+        <div>
+          <p className="text-xl font-semibold mb-4">Contact Store</p>
+          <p className="flex items-center gap-3 text-lg">
+            <span className="text-xl">📞</span> {phone}
+          </p>
+        </div>
       </div>
-    </Card>
+
+      <div className="grid grid-cols-2 gap-x-12 text-lg">
+        <div className="space-y-2">
+          {Object.entries(hours).slice(0, 4).map(([day, time]) => (
+            <div key={day} className="flex justify-between">
+              <span>{day}</span>
+              <span>{time}</span>
+            </div>
+          ))}
+        </div>
+        <div className="space-y-2">
+          {Object.entries(hours).slice(4).map(([day, time]) => (
+            <div key={day} className="flex justify-between">
+              <span>{day}</span>
+              <span>{time}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 }
