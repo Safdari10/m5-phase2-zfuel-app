@@ -57,7 +57,7 @@ export default function SearchBar({ onLocationSelect }: SearchBarProps) {
           {suggestions.map((suggestion) => (
             <div
               key={suggestion.id}
-              className="p-4 hover:bg-gray-100 cursor-pointer"
+              className="p-4 hover:bg-gray-100 cursor-pointer text-2xl"
               onClick={() => handleSelectLocation(suggestion)}
             >
               {suggestion.place_name}

@@ -12,15 +12,13 @@ export async function GET(request: Request) {
     const lat = parseFloat(searchParams.get('lat') || '0');
     const lng = parseFloat(searchParams.get('lng') || '0');
 
-    // Validate coordinates
-    if (isNaN(lat) || isNaN(lng)) {
-      return NextResponse.json(
-        { error: 'Invalid coordinates provided' }, 
-        { status: 400 }
-      );
-    }
-    
-    // Find stations within 20km radius
+    console.log('Searching for stations near:', { lat, lng });
+
+    // First verify we can get all stations
+    const allStations = await Station.find({}).exec();
+    console.log('Total stations in database:', allStations.length);
+
+    // Then do the geospatial query
     const stations = await Station.find({
       location: {
         $near: {
@@ -28,18 +26,26 @@ export async function GET(request: Request) {
             type: 'Point',
             coordinates: [lng, lat]
           },
-          $maxDistance: 20000 // 20km in meters
+          $maxDistance: 20000
         }
       }
-    }).exec(); // Add .exec() to properly execute the query
-    
-    // Return stations
-    return NextResponse.json({ stations });
+    }).exec();
+
+    console.log('Found nearby stations:', stations.length);
+
+    return NextResponse.json({
+      success: true,
+      count: stations.length,
+      stations: stations.map(station => station.toObject())
+    });
 
   } catch (error) {
     console.error('Database error:', error);
     return NextResponse.json(
-      { error: 'Failed to fetch stations' }, 
+      { 
+        error: 'Failed to fetch stations',
+        details: error instanceof Error ? error.message : String(error)
+      }, 
       { status: 500 }
     );
   }
