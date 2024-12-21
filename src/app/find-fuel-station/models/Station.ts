@@ -26,7 +26,7 @@ const StationSchema = new mongoose.Schema({
   },
   services: [String]
 }, {
-  collection: 'stations'
+  collection: 'ZFUEL'
 });
 
 // Create the model only if it doesn't exist
