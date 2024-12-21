@@ -1,40 +1,54 @@
-/// <reference types="react" />
 "use client";
 
-import { MapPin } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
 import StationCard from "@/components/StationCard";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
-export default function Home() {
+interface ServiceIconProps {
+  type: 'shop' | 'fuel' | 'carwash' | 'air';
+}
+
+export function ServiceIcon({ type }: ServiceIconProps) {
+  // Add your icon SVGs or images here
+  return (
+    <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
+      {/* Add icon based on type */}
+    </div>
+  );
+}
+
+export default function FindFuelStation() {
   return (
     <main className="min-h-screen flex flex-col">
       <Header />
       
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-[#F36F21] to-[#FF8F4D] py-28 px-12">
-        <div className="max-w-[1920px] mx-auto text-center">
-          <h1 className="text-6xl md:text-7xl font-bold text-white mb-16">
+      <section className="relative py-32 px-12 overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 z-0"
+          style={{
+            backgroundImage: "url('/images/banner.png')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
+        />
+        
+        {/* Content */}
+        <div className="max-w-[1920px] mx-auto relative z-10 mt-8">
+          <h1 
+            className="text-8xl font-bold tracking-wide relative"
+            style={{
+              color: 'white',
+              textShadow: `
+                2px 2px 0 #4A3F35,
+                -2px -2px 0 #ffffff50,
+                4px 4px 8px rgba(0,0,0,0.6)
+              `
+            }}
+          >
             Find a fuel station near you
           </h1>
-          <div className="flex max-w-4xl mx-auto gap-6">
-            <div className="relative flex-1">
-              <Input 
-                placeholder="Enter your location" 
-                className="pl-16 h-16 bg-white text-xl rounded-2xl"
-                style={{ fontSize: '1.25rem' }}
-              />
-              <MapPin className="absolute left-6 top-1/2 -translate-y-1/2 text-gray-400" size={28} />
-            </div>
-            <Button 
-              className="bg-[#F36F21] hover:bg-[#E55E10] h-16 px-12 text-xl font-semibold rounded-2xl"
-              style={{ fontSize: '1.25rem' }}
-            >
-              Search
-            </Button>
-          </div>
         </div>
       </section>
 
