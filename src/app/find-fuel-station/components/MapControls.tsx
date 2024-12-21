@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import Image from 'next/image';
+
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
 interface MapProps {
  stations: any[];
@@ -50,8 +52,8 @@ export default function Map({ stations, center, onStationSelect }: MapProps) {
      const el = document.createElement('div');
      el.className = 'custom-marker';
      el.innerHTML = `
-       <div class="w-12 h-12 bg-white rounded-full shadow-lg flex items-center justify-center">
-         <img src="/images/z-logo.svg" alt="Z Station" class="w-8 h-8" />
+       <div class="w-12 h-12 bg-orange-500 rounded-full shadow-lg flex items-center justify-center">
+         <img src="/images/find_Z2.png" alt="Z Station" class="w-12 h-12 object-contain" />
        </div>
      `;
       // Create popup

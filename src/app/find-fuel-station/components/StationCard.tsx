@@ -12,10 +12,10 @@ interface StationCardProps {
 }
 
 const serviceIcons: { [key: string]: React.ReactElement } = {
-  Shop: <Store />,
-  Fuel: <Fuel />,
-  "Car Wash": <Car />,
-  Air: <Wind />
+  Shop: <Store className="text-green-500" />,
+  Fuel: <Fuel className="text-green-500" />,
+  "Car Wash": <Car className="text-green-500" />,
+  Air: <Wind className="text-green-500" />
 };
 
 export default function StationCard({
@@ -46,7 +46,7 @@ export default function StationCard({
                       className="w-11 h-11 bg-white/20 rounded-full flex items-center justify-center"
                     >
                       {React.cloneElement(serviceIcons[service] as React.ReactElement, {
-                        className: "w-7 h-7 text-white"
+                        className: "w-7 h-7 text-green-500"
                       })}
                     </div>
                   ))}

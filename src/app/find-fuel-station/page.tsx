@@ -13,12 +13,14 @@ export default function FindFuelStation() {
   const [mapCenter, setMapCenter] = useState<[number, number]>([174.7645, -36.8509]); // Auckland
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   const handleLocationSelect = async (lat: number, lng: number) => {
     try {
       setError(null);
       setLoading(true);
       setMapCenter([lng, lat]);
+      setHasSearched(true);
       
       console.log('Fetching stations for:', { lat, lng }); // Debug log
       
@@ -103,7 +105,7 @@ export default function FindFuelStation() {
                       />
                     ))
                   )
-                ) : !loading && (
+                ) : !loading && hasSearched && (
                   <div className="text-center p-4 text-gray-500">
                     No stations found in this area
                   </div>

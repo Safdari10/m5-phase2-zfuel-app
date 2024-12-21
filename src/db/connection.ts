@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = 'mongodb://127.0.0.1:27017/ZFUEL';
+const MONGODB_URI = 'mongodb://127.0.0.1:27017/Phase2';
 
 if (!MONGODB_URI) {
   throw new Error('Please define the MONGODB_URI environment variable inside .env');
@@ -41,7 +41,7 @@ async function connectDB() {
           required: true
         }
       }
-    }));
+    }), 'ZFUEL');
 
     // Ensure index exists
     await Station.collection.createIndex({ location: '2dsphere' });
