@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import connectDB from '@/db/connection';
+import connectDB from '@/app/find-fuel-station/db/connection';
 import Station from '@/app/find-fuel-station/models/Station';
 
 export async function GET(request: Request) {
