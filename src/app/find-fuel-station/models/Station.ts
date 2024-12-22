@@ -1,4 +1,4 @@
-import { mongoose } from '@/db/connection';
+import { mongoose } from '@/app/find-fuel-station/db/connection';
 
 const StationSchema = new mongoose.Schema({
   name: String,
