@@ -81,12 +81,12 @@ export default function FindFuelStation() {
               <div className="w-[65%] mb-8">
                 <SearchBar onLocationSelect={handleLocationSelect} />
                 {error && (
-                  <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+                  <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg text-2xl">
                     {error}
                   </div>
                 )}
                 {loading && (
-                  <div className="mt-4 text-center">
+                  <div className="mt-4 text-center text-2xl">
                     Loading stations...
                   </div>
                 )}
@@ -106,7 +106,7 @@ export default function FindFuelStation() {
                     ))
                   )
                 ) : !loading && hasSearched && (
-                  <div className="text-center p-4 text-gray-500">
+                  <div className="text-center p-4 text-gray-500 text-2xl">
                     No stations found in this area
                   </div>
                 )}
