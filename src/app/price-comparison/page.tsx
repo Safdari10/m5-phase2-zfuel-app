@@ -7,10 +7,12 @@ const PriceComparisonPage: React.FC = () => {
   return (
     <div>
       <Header />
-      <main>
-        <img src="/images/compare" alt="heading image for page" />
-        <img src="/images/price_compare" alt="hero image for page" />
-        <h1>Compare Price Across Stations</h1>
+      <main className="max-w-[1920px] mx-auto px-12">
+        <div className="flex flex-col justify-center align-middle gap-16 mt-2">
+          <img src="/images/compare.png" alt="heading image for page" className="h-[200px] my-4" />
+          <img src="/images/price_compare.png" alt="hero image for page" className="h-[493px] my-4" />
+        </div>
+        <h1 className="text-[#1E196B] font-bold text-[20px] my-24 ml-24" >Compare Price Across Stations</h1>
       </main>
       <Footer />
     </div>
