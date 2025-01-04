@@ -35,7 +35,7 @@ const PriceDisplay: React.FC = () => {
           Search
         </button>
       </div>
-      <div className="flex items-center justify-end gap-20 mr-8 mb-10">
+      <div className="flex items-center justify-evenly ml-52 mb-10">
         <div className="w-[209px] h-[209px] rounded-xl shadow-md bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
           <img
             src="/priceComparison/91.png"
