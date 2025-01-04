@@ -23,7 +23,10 @@ const PriceComparisonPage: React.FC = () => {
         <h1 className="text-[#1E196B] font-bold text-[20px] my-24 ml-24">
           Compare Price Across Stations
         </h1>
-        <PriceDisplay />
+        <div className="mb-96">
+          <PriceDisplay />
+          <PriceDisplay />
+        </div>
       </main>
       <Footer />
     </div>
