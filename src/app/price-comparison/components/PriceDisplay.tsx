@@ -20,18 +20,18 @@ const PriceDisplay: React.FC = () => {
   };
 
   return (
-    <div>
-      <div className="flex items-center justify-start gap-8 ml-24 mb-10">
+    <div className="mb-20" >
+      <div className="flex items-center justify-start gap-10 ml-24 mb-10">
         <input
           type="text"
           placeholder="Enter address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          className="border rounded px-2 py-1 bg-gray-100 w-[330px] text-[16px] font-semibold shadow-md"
+          className="p-4 bg-gray-50 w-[330px] text-[15px] font-light rounded-lg shadow-lg"
         />
         <button
           onClick={handleSearch}
-          className="w-[90px] text-white rounded-md text-[16px] font-semibold text-center bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
+          className="w-[90px] text-white rounded-xl text-[16px] font-semibold text-center bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
           Search
         </button>
       </div>
@@ -88,7 +88,7 @@ const PriceDisplay: React.FC = () => {
             className="ml-28"
           />
           <div>
-            <div className="bg-gradient-to-r from-[#1E196B] to-[#3129AB] w-[168px] font-semibold text-[14px] text-white text-center mt-6 mx-7 rounded-md">
+            <div className="w-[168px] font-semibold text-[14px] text-white text-center mt-6 mx-7 rounded-md bg-gradient-to-r from-[#1E196B] via-[#2C238A] to-[#3129AB]">
             {prices ? (
               <span className="py-6">{prices.price3}</span>
             ) : (
