@@ -21,7 +21,7 @@ const PriceDisplay: React.FC = () => {
 
   return (
     <div>
-      <div className="flex items-center justify-start gap-8 mb-10">
+      <div className="flex items-center justify-start gap-8 ml-24 mb-10">
         <input
           type="text"
           placeholder="Enter address"
@@ -35,8 +35,8 @@ const PriceDisplay: React.FC = () => {
           Search
         </button>
       </div>
-      <div className="flex items-center justify-around gap-2 mb-10">
-        <div className="w-[209px] h-[209px]   bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
+      <div className="flex items-center justify-end gap-20 mr-8 mb-10">
+        <div className="w-[209px] h-[209px] rounded-xl shadow-md bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
           <img
             src="/priceComparison/91.png"
             alt="91 logo"
@@ -47,15 +47,15 @@ const PriceDisplay: React.FC = () => {
             alt="z logo"
             className="ml-28"
           />
-          <div className="bg-[#00732E] w-[168px] font-semibold text-[14px] text-white text-center mt-6 mx-6 rounded-md">
+          <div className="bg-[#00732E] w-[168px] font-semibold text-[14px] text-white text-center mt-6 mx-7 rounded-md">
             {prices ? (
-              <span className="p-4">{prices.price1}</span>
+              <span className="py-6">{prices.price1}</span>
             ) : (
-              <span className="p-4">Price 1</span>
+              <span className="py-6">Price 1</span>
             )}
           </div>
         </div>
-        <div className="w-[209px] h-[209px]  bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
+        <div className="w-[209px] h-[209px] rounded-xl shadow-md  bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
           <img
             src="/priceComparison/95.png"
             alt="95 logo"
@@ -66,9 +66,17 @@ const PriceDisplay: React.FC = () => {
             alt="z logo"
             className="ml-28"
           />
-          Price 2:
+         <div>
+          <div className="bg-[#E65F24] w-[168px] font-semibold text-[14px] text-white text-center mt-6 mx-7 rounded-md">
+            {prices ? (
+              <span className="py-6">{prices.price2}</span>
+            ) : (
+              <span className="py-6">Price 2</span>
+            )}
+          </div>
+         </div>
         </div>
-        <div className="w-[209px] h-[209px]   bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
+        <div className="w-[209px] h-[209px] rounded-xl shadow-md bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
           <img
             src="/priceComparison/D.png"
             alt="diesel logo"
@@ -79,11 +87,19 @@ const PriceDisplay: React.FC = () => {
             alt="z logo"
             className="ml-28"
           />
-          Price 3:
+          <div>
+            <div className="bg-gradient-to-r from-[#1E196B] to-[#3129AB] w-[168px] font-semibold text-[14px] text-white text-center mt-6 mx-7 rounded-md">
+            {prices ? (
+              <span className="py-6">{prices.price3}</span>
+            ) : (
+              <span className="py-6">Price 3</span>
+            )}
+            </div>
         </div>
       </div>
     </div>
+  </div>
   );
-};
+}
 
 export default PriceDisplay;
