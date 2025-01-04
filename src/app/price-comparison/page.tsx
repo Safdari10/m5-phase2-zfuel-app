@@ -10,12 +10,12 @@ const PriceComparisonPage: React.FC = () => {
       <main className="max-w-[1920px] mx-auto px-12">
         <div className="flex flex-col justify-center align-middle gap-16 mt-2">
           <img
-            src="/images/compare.png"
+            src="/priceComparison/compare.png"
             alt="heading image for page"
             className="h-[200px] my-4"
           />
           <img
-            src="/images/price_compare.png"
+            src="/priceComparison/price_compare.png"
             alt="hero image for page"
             className="h-[493px] my-4"
           />
