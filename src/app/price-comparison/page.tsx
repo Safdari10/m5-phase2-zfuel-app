@@ -1,5 +1,5 @@
-import Footer from "@/components/Footer";
-import Header from "@/components/Header";
+import Footer from "./components/Footer";
+import Header from "./components/Header";
 import React from "react";
 import PriceDisplay from "./components/PriceDisplay";
 
@@ -7,7 +7,7 @@ const PriceComparisonPage: React.FC = () => {
   return (
     <div>
       <Header />
-      <main className="max-w-[1920px] mx-auto px-12">
+      <main className="max-w-[1280px] mx-auto px-12">
         <div className="flex flex-col justify-center align-middle gap-16 mt-2">
           <img
             src="/priceComparison/compare.png"
