@@ -8,7 +8,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "seed": "ts-node --project tsconfig.ts-node.json src/db/command.ts"
+    "seed": "ts-node src/db/command.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.0",
