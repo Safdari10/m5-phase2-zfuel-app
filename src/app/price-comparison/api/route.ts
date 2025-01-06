@@ -1,43 +1,35 @@
-import NextApiRequest from 'next';
-import NextApiResponse from 'next';
+import { NextRequest, NextResponse } from 'next/server';
 import connectDB from '@/db/connection';
 import ZFuelStation from '@/db/model';
 
-const handler = async (req: NextApiRequest, res: NextApiResponse) => {
+export async function GET(req: NextRequest) {
   await connectDB();
 
-  if (req.method === 'GET') {
-    const { address } = req.query;
+  const searchParams = req.nextUrl.searchParams;
+  const address = searchParams.get('address');
 
-    if (!address || typeof address !== 'string') {
-      return res.status(400).json({ error: 'Address is required' });
-    }
-
-    const [street, city, state, zip] = address.split(',');
-
-    if (!street || !city || !state || !zip) {
-      return res.status(400).json({ error: 'Address must include street, city, state, and zip' });
-    }
-
-    try {
-      const station = await ZFuelStation.findOne({
-        'address.street': street.trim(),
-        'address.city': city.trim(),
-        'address.state': state.trim(),
-        'address.zip': zip.trim()
-      });
-
-      if (!station) {
-        return res.status(404).json({ error: 'Station not found' });
-      }
-
-      return res.status(200).json({ prices: station.prices });
-    } catch (error) {
-      return res.status(500).json({ error: 'Error retrieving fuel prices' });
-    }
-  } else {
-    return res.status(405).json({ error: 'Method not allowed' });
+  if (!address) {
+    return NextResponse.json({ error: 'Address is required' }, { status: 400 });
   }
-};
 
-export default handler;
+  const [street, city] = address.split(',');
+
+  if (!street || !city) {
+    return NextResponse.json({ error: 'Address must include street and city' }, { status: 400 });
+  }
+
+  try {
+    const station = await ZFuelStation.findOne({
+      'address.street': street.trim(),
+      'address.city': city.trim()
+    });
+
+    if (!station) {
+      return NextResponse.json({ error: 'Station not found' }, { status: 404 });
+    }
+
+    return NextResponse.json({ prices: station.prices });
+  } catch (error) {
+    return NextResponse.json({ error: 'Error retrieving fuel prices' }, { status: 500 });
+  }
+}
