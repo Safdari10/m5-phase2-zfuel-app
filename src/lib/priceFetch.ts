@@ -6,7 +6,7 @@ export const fetchPrices = async (address: string) => {
       throw new Error(errorData.error || 'Failed to fetch prices');
     }
     const data = await response.json();
-    return data.prices;
+    return data;
   } catch (error) {
     console.error('Error fetching prices:', error);
     throw error;
