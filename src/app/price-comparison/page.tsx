@@ -1,9 +1,8 @@
 import Footer from "./components/Footer";
 import Header from "./components/Header";
-import React from "react";
 import PriceDisplay from "./components/PriceDisplay";
 
-const PriceComparisonPage: React.FC = () => {
+const PriceComparisonPage = () => {
   return (
     <div>
       <Header />
