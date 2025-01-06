@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-import connectDB from './connection';
-import ZFuelStation from './model';
+import connectDB from './connection.js';
+import ZFuelStation from './model.js';
 
 const seedData = async () => {
   await connectDB();
