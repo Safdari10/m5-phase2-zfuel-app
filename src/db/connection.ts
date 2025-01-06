@@ -1,20 +1,19 @@
 import mongoose from 'mongoose';
- 
- 
-const URI ='mongodb://localhost:27017/zfuel';
- 
+
+const URI = 'mongodb://localhost:27017/zfuel';
+
 const connectDB = async () => {
-    try {
-        await mongoose.connect(URI);
-        console.log('MongoDB connected successfully');
-    } catch (error) {
-        if (error instanceof Error) {
-            console.error("MongoDB connection error:", error.message);
-        } else {
-            console.error("MongoDB connection error:", error);
-        }
-        process.exit(1);
+  try {
+    await mongoose.connect(URI);
+    console.log('MongoDB connected successfully');
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error('MongoDB connection error:', error.message);
+    } else {
+      console.error('MongoDB connection error:', error);
     }
-}
- 
-module.exports = connectDB;
+    process.exit(1);
+  }
+};
+
+export default connectDB;
