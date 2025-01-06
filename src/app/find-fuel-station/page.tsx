@@ -75,7 +75,7 @@ export default function FindFuelStation() {
       {/* Main Content */}
       <div className="w-full px-12 py-8 relative bg-split">
         <div className="relative z-10">
-          <div className="grid grid-cols-3 gap-8 h-[calc(100vh-500px)]">
+          <div className="grid grid-cols-3 gap-8">
             {/* Empty first column */}
             <div></div>
 

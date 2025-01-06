@@ -82,7 +82,7 @@ export default function Map({ stations, center, onStationSelect }: MapProps) {
    };
  }, [stations, center, zoom]);
   return (
-   <div className="relative w-full h-full">
+   <div className="relative w-full h-[400px]">
      <div ref={mapContainer} className="w-full h-full rounded-3xl" />
      
      {/* Zoom Controls */}
