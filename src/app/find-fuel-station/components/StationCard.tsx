@@ -28,46 +28,45 @@ export default function StationCard({
   return (
     <div className="relative">
       {/* Main card */}
-      <div className="bg-gradient-to-r from-[#F36F21] to-[#FFC42E] p-6 rounded-[28px] text-white 
-        relative max-w-[650px]"
+      <div className="bg-gradient-to-r from-[#F36F21] to-[#FFC42E] p-4 rounded-xl text-white 
+        relative max-w-[400px]"
       >
         {/* Content */}
         <div className="flex justify-between gap-4">
           <div className="w-[60%]">
-            <h2 className="text-3xl font-bold mb-2">{name}</h2>
-            <p className="text-lg mb-6">{address}</p>
+            <h2 className="text-xl font-bold mb-1">{name}</h2>
+            <p className="text-sm mb-3">{address}</p>
             
-            <div className="space-y-5">
+            <div className="space-y-3">
               <div>
-                <p className="text-xl font-semibold mb-3">Services Offered</p>
+                <p className="text-sm font-semibold mb-2">Services Offered</p>
                 <div className="flex gap-2">
                   {services.map((service) => (
                     <div key={service} 
-                      className="w-11 h-11 bg-white/20 rounded-full flex items-center justify-center"
+                      className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
                     >
                       {React.cloneElement(serviceIcons[service] as React.ReactElement, {
-                        className: "w-7 h-7 text-green-500"
+                        className: "w-5 h-5 text-green-500"
                       })}
                     </div>
                   ))}
                 </div>
               </div>
-
+              
               <div>
-                <p className="text-xl font-semibold mb-2">Contact Store</p>
-                <p className="flex items-center gap-2 text-lg">
-                  <span>📞</span> {phone}
-                </p>
+                <p className="text-sm font-semibold mb-2">Contact Store</p>
+                <p className="text-sm">{phone}</p>
               </div>
             </div>
           </div>
-
-          {/* Right Section - Hours */}
-          <div className="w-[40%] pl-4">
-            <div className="space-y-1.5">
+          
+          {/* Hours */}
+          <div className="w-[40%] text-sm">
+            <p className="font-semibold mb-2">Hours</p>
+            <div className="space-y-1">
               {Object.entries(hours).map(([day, time]) => (
-                <div key={day} className="flex justify-between text-lg">
-                  <span className="w-14">{day}</span>
+                <div key={day} className="flex justify-between">
+                  <span>{day}</span>
                   <span>{time}</span>
                 </div>
               ))}

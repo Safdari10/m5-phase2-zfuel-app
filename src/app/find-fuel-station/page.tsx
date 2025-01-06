@@ -66,7 +66,7 @@ export default function FindFuelStation() {
         />
         
         <div className="max-w-[1920px] mx-auto relative z-10 mt-8">
-          <h1 className="text-8xl font-bold text-white tracking-wide relative">
+          <h1 className="text-8xl font-bold text-white tracking-wide relative drop-shadow-[10px_24px_1px_rgba(0,0,0,0.3)]">
             Find a fuel station near you
           </h1>
         </div>
@@ -75,10 +75,13 @@ export default function FindFuelStation() {
       {/* Main Content */}
       <div className="w-full px-12 py-8 relative bg-split">
         <div className="relative z-10">
-          <div className="flex gap-8 h-[calc(100vh-300px)]">
-            {/* Left Section */}
-            <div className="w-1/2 flex flex-col items-end">
-              <div className="w-[65%] mb-8">
+          <div className="grid grid-cols-3 gap-8">
+            {/* Empty first column */}
+            <div></div>
+
+            {/* Search and Results - Middle Column */}
+            <div className="flex flex-col">
+              <div className="w-full mb-8">
                 <SearchBar onLocationSelect={handleLocationSelect} />
                 {error && (
                   <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg text-2xl">
@@ -92,7 +95,7 @@ export default function FindFuelStation() {
                 )}
               </div>
 
-              <div className="w-[65%] space-y-4 overflow-y-auto">
+              <div className="w-full space-y-4 overflow-y-auto">
                 {stations.length > 0 ? (
                   selectedStation ? (
                     <StationCard {...selectedStation} />
@@ -113,8 +116,8 @@ export default function FindFuelStation() {
               </div>
             </div>
 
-            {/* Map Section */}
-            <div className="w-1/2 bg-gray-100 rounded-3xl relative">
+            {/* Map Section - Last Column */}
+            <div className="bg-gray-100 rounded-3xl relative h-[400px]"> 
               <MapControls 
                 stations={stations}
                 center={mapCenter}

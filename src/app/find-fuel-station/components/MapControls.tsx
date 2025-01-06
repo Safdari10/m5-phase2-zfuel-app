@@ -2,7 +2,6 @@
 import { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import Image from 'next/image';
 
 mapboxgl.accessToken = process.env.NEXT_PUBLIC_MAPBOX_TOKEN!;
 interface MapProps {
@@ -83,7 +82,7 @@ export default function Map({ stations, center, onStationSelect }: MapProps) {
    };
  }, [stations, center, zoom]);
   return (
-   <div className="relative w-full h-full">
+   <div className="relative w-full h-[400px]">
      <div ref={mapContainer} className="w-full h-full rounded-3xl" />
      
      {/* Zoom Controls */}
