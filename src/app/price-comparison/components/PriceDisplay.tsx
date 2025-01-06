@@ -1,9 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import { useState } from "react";
 import { fetchPrices } from "@/lib/priceFetch";
 
-const PriceDisplay: React.FC = () => {
+const PriceDisplay = () => {
   const [address, setAddress] = useState("");
   const [prices, setPrices] = useState<{
     diesel: number;
