@@ -19,8 +19,8 @@ const PriceDisplay = () => {
     try {
       const data = await fetchPrices(address);
       setPrices(data.prices);
-    } catch (err) {
-      setError("Error fetching fuel prices");
+    } catch (err: any) {
+      setError(err.message || "Error fetching fuel prices");
     }
   };
 
