@@ -66,7 +66,7 @@ export default function FindFuelStation() {
         />
         
         <div className="max-w-[1920px] mx-auto relative z-10 mt-8">
-          <h1 className="text-8xl font-bold text-white tracking-wide relative">
+          <h1 className="text-8xl font-bold text-white tracking-wide relative drop-shadow-[10px_24px_1px_rgba(0,0,0,0.3)]">
             Find a fuel station near you
           </h1>
         </div>
