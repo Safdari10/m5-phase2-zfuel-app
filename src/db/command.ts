@@ -9,9 +9,7 @@ const seedData = async () => {
     {
       address: {
         street: '123 Main St',
-        city: 'Auckland',
-        state: 'AKL',
-        zip: '1010'
+        city: 'Auckland'
       },
       prices: {
         diesel: 1.50,
@@ -22,9 +20,7 @@ const seedData = async () => {
     {
       address: {
         street: '456 Queen St',
-        city: 'Wellington',
-        state: 'WLG',
-        zip: '6011'
+        city: 'Wellington'
       },
       prices: {
         diesel: 1.55,
@@ -35,9 +31,7 @@ const seedData = async () => {
     {
       address: {
         street: '789 King St',
-        city: 'Christchurch',
-        state: 'CHC',
-        zip: '8011'
+        city: 'Christchurch'
       },
       prices: {
         diesel: 1.60,
