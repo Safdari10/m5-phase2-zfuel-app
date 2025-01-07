@@ -41,7 +41,11 @@ const PriceDisplay = () => {
           Search
         </button>
       </div>
-      {error && <p className="text-red-500">{error}</p>}
+      {error && (
+        <p className="text-[#666666] text-[15px] font-light mt-2 ml-10 sm:ml-24 mb-10">
+          {error}
+        </p>
+      )}
       <div className="flex items-center justify-evenly flex-col sm:flex-row  sm:ml-52 mb-10">
         <div className="mb-10 sm:mb-0 w-[250px] h-[250px] rounded-xl shadow-lg bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
           <img src="/priceComparison/91.png" alt="91 logo" className="p-6 ml-3" />
