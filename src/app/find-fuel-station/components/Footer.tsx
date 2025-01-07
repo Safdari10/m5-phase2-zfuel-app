@@ -1,11 +1,11 @@
 export default function Footer() {
   return (
-    <footer className="bg-[#F8F8F8] mt-auto py-24">
+    <footer className="bg-[#F8F8F8] mt-auto py-12">
       <div className="max-w-[1280px] mx-auto px-4 md:px-12">
         <div className="flex items-start gap-16">
           {/* Logo Container */}
-          <div className="w-[300px] flex justify-center">
-            <a href="/" className="shrink-0">
+          <div className="shrink-0">
+            <a href="/">
               <img
                 src="/images/z_fuel_logo.png"
                 alt="Z Energy Logo"
