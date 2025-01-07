@@ -43,6 +43,10 @@ export default function FindFuelStation() {
     }
   };
 
+  const handleStationSelect = (station: any) => {
+    setSelectedStation(station);
+  };
+
   return (
     <main className="min-h-screen flex flex-col bg-white">
       <Header />
@@ -74,7 +78,7 @@ export default function FindFuelStation() {
       </section>
 
       {/* Main Content */}
-      <div className="w-full bg-white relative">
+      <div key="main-content-container" className="w-full bg-white relative">
         {/* White background with diagonal cut */}
         <div className="absolute inset-0 bg-white" />
         
@@ -87,47 +91,54 @@ export default function FindFuelStation() {
           }}
         />
         
-        <div className="max-w-[1280px] mx-auto px-4 md:px-12 py-8 relative z-10">
-          {/* Search Bar Section */}
-          <div className="max-w-[465px]">
-            <SearchBar onLocationSelect={handleLocationSelect} />
-            {error && (
-              <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
-                {error}
+        <div key="main-content" className="max-w-[1280px] mx-auto px-4 md:px-12 relative z-10 mt-24 pb-24">
+          <div key="main-content-flex" className="flex justify-between items-start">
+            {/* Left Column */}
+            <div key="left-column" className="w-[465px]">
+              {/* Search Bar Section */}
+              <div key="search-section">
+                <SearchBar onLocationSelect={handleLocationSelect} />
+                {error && (
+                  <div key="error" className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+                    {error}
+                  </div>
+                )}
+                {loading && (
+                  <div key="loading" className="mt-4">
+                    Loading stations...
+                  </div>
+                )}
               </div>
-            )}
-            {loading && (
-              <div className="mt-4 text-center">
-                Loading stations...
-              </div>
-            )}
-          </div>
 
-          {/* Content Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
-            {/* Results Section */}
-            <div className="max-w-[465px] flex flex-col space-y-4">
-              {stations.length > 0 ? (
-                selectedStation ? (
-                  <StationCard {...selectedStation} />
-                ) : (
-                  stations.map((station) => (
-                    <StationCard 
-                      key={station._id} 
-                      {...station} 
-                      onClick={() => setSelectedStation(station)}
-                    />
-                  ))
-                )
-              ) : !loading && hasSearched && (
-                <div className="text-center p-4">
-                  No stations found in this area
-                </div>
-              )}
+              {/* Results Section */}
+              <div key="results-section" className="flex flex-col space-y-4 mt-4">
+                {hasSearched ? (
+                  stations.length > 0 ? (
+                    selectedStation ? (
+                      <StationCard 
+                        key="selected-station"
+                        {...selectedStation} 
+                      />
+                    ) : (
+                      stations.map((station) => (
+                        <StationCard
+                          key={station.id || station._id?.toString()}
+                          {...station}
+                          onClick={() => handleStationSelect(station)}
+                        />
+                      ))
+                    )
+                  ) : (
+                    <div key="no-results" className="text-gray-500">
+                      No stations found. Try a different location.
+                    </div>
+                  )
+                ) : null}
+              </div>
             </div>
 
             {/* Map Section */}
-            <div className="overflow-hidden h-[400px] border-2 border-black">
+            <div key="map-section" className="w-[600px] overflow-hidden h-[400px] rounded-xl border-2 border-black">
               <MapControls 
                 stations={stations}
                 center={mapCenter}

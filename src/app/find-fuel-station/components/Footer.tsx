@@ -1,4 +1,26 @@
 export default function Footer() {
+  const productsLinks = [
+    { text: "At the station", href: "/" },
+    { text: "Z app", href: "/" },
+    { text: "Rewards and promotions", href: "/" }
+  ];
+
+  const businessLinks = [
+    { text: "Z Business fuel card", href: "/" },
+    { text: "Fuels and services", href: "/" },
+    { text: "Business tips and stories", href: "/" }
+  ];
+
+  const aboutLinks = [
+    { text: "Our story", href: "/" },
+    { text: "Our people", href: "/" },
+    { text: "What we stand for", href: "/" },
+    { text: "Sustainability", href: "/" },
+    { text: "News", href: "/" },
+    { text: "Careers at Z", href: "/" },
+    { text: "Corporate Centre", href: "/" }
+  ];
+
   return (
     <footer className="bg-[#F8F8F8] mt-auto py-12">
       <div className="max-w-[1280px] mx-auto px-4 md:px-12">
@@ -20,9 +42,13 @@ export default function Footer() {
             <div>
               <h3 className="text-[#1E196B] font-bold text-xl mb-6">Products and Services</h3>
               <ul className="space-y-4">
-                <li><a href="/" className="hover:underline text-base">At the station</a></li>
-                <li><a href="/" className="hover:underline text-base">Z app</a></li>
-                <li><a href="/" className="hover:underline text-base">Rewards and promotions</a></li>
+                {productsLinks.map((link) => (
+                  <li key={link.text}>
+                    <a href={link.href} className="hover:underline text-base">
+                      {link.text}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -30,9 +56,13 @@ export default function Footer() {
             <div>
               <h3 className="text-[#1E196B] font-bold text-xl mb-6">For businesses</h3>
               <ul className="space-y-4">
-                <li><a href="/" className="hover:underline text-base">Z Business fuel card</a></li>
-                <li><a href="/" className="hover:underline text-base">Fuels and services</a></li>
-                <li><a href="/" className="hover:underline text-base">Business tips and stories</a></li>
+                {businessLinks.map((link) => (
+                  <li key={link.text}>
+                    <a href={link.href} className="hover:underline text-base">
+                      {link.text}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
@@ -40,13 +70,13 @@ export default function Footer() {
             <div>
               <h3 className="text-[#1E196B] font-bold text-xl mb-6">About Z</h3>
               <ul className="space-y-4">
-                <li><a href="/" className="hover:underline text-base">Our story</a></li>
-                <li><a href="/" className="hover:underline text-base">Our people</a></li>
-                <li><a href="/" className="hover:underline text-base">What we stand for</a></li>
-                <li><a href="/" className="hover:underline text-base">Sustainability</a></li>
-                <li><a href="/" className="hover:underline text-base">News</a></li>
-                <li><a href="/" className="hover:underline text-base">Careers at Z</a></li>
-                <li><a href="/" className="hover:underline text-base">Corporate Centre</a></li>
+                {aboutLinks.map((link) => (
+                  <li key={link.text}>
+                    <a href={link.href} className="hover:underline text-base">
+                      {link.text}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
 
