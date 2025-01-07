@@ -78,40 +78,45 @@ export default function FindFuelStation() {
       </section>
 
       {/* Main Content */}
-      <div key="main-content-container" className="w-full bg-white relative">
-        {/* White background with diagonal cut */}
-        <div className="absolute inset-0 bg-white" />
-        
-        {/* Diagonal gradient background */}
+      <div className="w-full relative">
+        {/* Gradient background */}
         <div 
           className="absolute inset-0"
           style={{
             background: 'linear-gradient(45deg, #F36F21, #FFC42E)',
-            clipPath: 'polygon(0 100%, 100% 0, 100% 100%)',
           }}
         />
         
-        <div key="main-content" className="max-w-[1280px] mx-auto px-4 md:px-12 relative z-10 mt-24 pb-24">
-          <div key="main-content-flex" className="flex justify-between items-start">
+        {/* White overlay with curve */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'white',
+            clipPath: 'polygon(0 0, 100% 0, 100% 10%, 0 100%)'
+          }}
+        />
+        
+        <div className="max-w-[1280px] mx-auto px-4 md:px-12 relative z-10 mt-16 pb-16">
+          <div className="flex justify-between items-start">
             {/* Left Column */}
-            <div key="left-column" className="w-[465px]">
+            <div className="w-[465px]">
               {/* Search Bar Section */}
-              <div key="search-section">
+              <div>
                 <SearchBar onLocationSelect={handleLocationSelect} />
                 {error && (
-                  <div key="error" className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+                  <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
                     {error}
                   </div>
                 )}
                 {loading && (
-                  <div key="loading" className="mt-4">
+                  <div className="mt-4">
                     Loading stations...
                   </div>
                 )}
               </div>
 
               {/* Results Section */}
-              <div key="results-section" className="flex flex-col space-y-4 mt-4">
+              <div className="flex flex-col space-y-4 mt-4">
                 {hasSearched ? (
                   stations.length > 0 ? (
                     selectedStation ? (
@@ -138,7 +143,7 @@ export default function FindFuelStation() {
             </div>
 
             {/* Map Section */}
-            <div key="map-section" className="w-[600px] overflow-hidden h-[400px] rounded-xl border-2 border-black">
+            <div className="w-[600px] overflow-hidden h-[400px] rounded-xl border-2 border-black">
               <MapControls 
                 stations={stations}
                 center={mapCenter}
