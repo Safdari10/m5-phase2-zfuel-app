@@ -116,11 +116,33 @@ export default function Header() {
                 <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
               </svg>
             </Button>
+
+            {/* Bottom Navigation Links in Mobile Menu */}
+            <div className="border-t border-gray-200 mt-4 pt-4">
+              <a href="/" className="py-3 text-lg font-medium hover:text-[#FF6B00] flex items-center justify-between">
+                How to enjoy Z station
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </a>
+              <a href="/" className="py-3 text-lg font-medium hover:text-[#FF6B00] flex items-center justify-between">
+                Reward and promotion
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </a>
+              <a href="/" className="py-3 text-lg font-medium hover:text-[#FF6B00] flex items-center justify-between">
+                Location
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       )}
 
-      {/* Bottom navigation section */}
+      {/* Bottom navigation section - Desktop */}
       <div className="hidden md:block">
         <div className="max-w-[1280px] mx-auto mt-2 px-12">
           <nav className="flex gap-12 ml-14">
