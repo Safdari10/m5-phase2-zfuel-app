@@ -86,7 +86,7 @@ export default function FindFuelStation() {
         
         <div className="max-w-[1280px] mx-auto px-4 md:px-12 py-8 relative z-10">
           {/* Search Bar Section */}
-          <div className="max-w-[400px]">
+          <div className="max-w-[465px]">
             <SearchBar onLocationSelect={handleLocationSelect} />
             {error && (
               <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
@@ -101,9 +101,9 @@ export default function FindFuelStation() {
           </div>
 
           {/* Content Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mt-8">
             {/* Results Section */}
-            <div className="flex flex-col space-y-4">
+            <div className="max-w-[465px] flex flex-col space-y-4">
               {stations.length > 0 ? (
                 selectedStation ? (
                   <StationCard {...selectedStation} />
@@ -124,7 +124,7 @@ export default function FindFuelStation() {
             </div>
 
             {/* Map Section */}
-            <div className="bg-white rounded-xl overflow-hidden h-[400px] border-2 border-black">
+            <div className="overflow-hidden h-[400px] border-2 border-black">
               <MapControls 
                 stations={stations}
                 center={mapCenter}
