@@ -63,7 +63,10 @@ export default function FindFuelStation() {
         
         <div className="max-w-[1280px] h-full mx-auto px-4 md:px-12 flex items-center relative z-20">
           <div className="w-full max-w-[780px] h-[75px] flex items-center">
-            <h1 className="text-4xl md:text-5xl font-bold text-white">
+            <h1 
+              className="text-4xl md:text-6xl font-roboto font-bold text-white"
+              style={{ textShadow: '24px 14px 4px rgba(0, 0, 0, 0.5)' }}
+            >
               Find a fuel station near you
             </h1>
           </div>
