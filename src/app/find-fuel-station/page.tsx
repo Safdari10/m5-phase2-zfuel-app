@@ -134,9 +134,7 @@ export default function FindFuelStation() {
                       ))
                     )
                   ) : (
-                    <div key="no-results" className="text-gray-500">
-                      No stations found. Try a different location.
-                    </div>
+                    <div key="no-results" className="text-gray-500 text-xl">No stations found. Try a different location.</div>
                   )
                 ) : null}
               </div>
