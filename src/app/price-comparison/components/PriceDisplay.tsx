@@ -43,7 +43,7 @@ const PriceDisplay = () => {
       </div>
       {error && (
         <p className="text-[#666666] text-[15px] font-light mt-2 ml-10 sm:ml-24 mb-10">
-          {error}
+          {address ? "We couldn't find any fuel prices for that address" : "Please enter an address to search for fuel prices"}
         </p>
       )}
       <div className="flex items-center justify-evenly flex-col sm:flex-row  sm:ml-52 mb-10">
