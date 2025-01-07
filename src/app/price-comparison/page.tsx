@@ -11,15 +11,15 @@ const PriceComparisonPage = () => {
           <img
             src="/priceComparison/compare.png"
             alt="heading image for page"
-            className="h-[200px] my-4"
+            className="h-[150px] sm:h-[200px] my-4"
           />
           <img
             src="/priceComparison/price_compare.png"
             alt="hero image for page"
-            className="h-[493px] my-4"
+            className="h-[150px] sm:h-[493px] my-4"
           />
         </div>
-        <h1 className="text-[#1E196B] font-bold text-[20px] my-24 ml-24">
+        <h1 className="text-[#1E196B] font-bold text-[20px] ml-10 mt-24 sm:ml-24 mb-32">
           Compare Price Across Stations
         </h1>
         <div className="mb-96">
