@@ -8,7 +8,7 @@ const Home: React.FC = () => {
     <div className="">
       <Header />
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-yellow-500 to-orange-400 text-center">
+      <section className="relative bg-gradient-to-r from-yellow-500 to-orange-400 text-center max-w-[1920px] mx-auto">
         <div className="relative">
           <img
             src="/homepage-images/homebanner.png"
@@ -29,7 +29,7 @@ const Home: React.FC = () => {
       </section>
 
       {/* Find a Z Station Section */}
-      <section className="relative bg-gradient-to-r from-yellow-500 to-orange-400 text-center h-[200px] mt-48">
+      <section className="relative bg-gradient-to-r from-yellow-500 to-orange-400 text-center max-w-[1920px] mx-auto mt-48 h-[200px]">
         <div className="relative w-full h-full">
           {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-[#E67817] to-[#F7B239] opacity-50 z-10"></div>

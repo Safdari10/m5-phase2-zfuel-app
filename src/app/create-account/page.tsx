@@ -61,7 +61,7 @@ const CreateAccountPage: React.FC = () => {
       <Header />
       <main className="min-h-screen bg-white">
         {/* Header Banner */}
-        <section className="relative bg-gradient-to-r from-yellow-500 to-orange-400">
+        <section className="relative bg-gradient-to-r from-yellow-500 to-orange-400 text-center max-w-[1920px] mx-auto">
           <div className="relative">
             <Image
               src="/homepage-images/cabanner.png"

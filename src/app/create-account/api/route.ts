@@ -38,14 +38,14 @@ export async function POST(request: Request) {
       );
     }
 
-    // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    // // Hash the password
+    // const hashedPassword = await bcrypt.hash(password, 10);
 
     // Create and save the new user
     const newUser = new User({
       username,
       email,
-      password: hashedPassword,
+      password: password, // Store the plain password (not recommended) (hashedPassword)
     });
     await newUser.save();
     console.log("User created successfully");
