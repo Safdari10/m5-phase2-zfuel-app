@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <header className="w-full">
       {/* Top section */}
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 h-24 flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-12 h-24 flex items-center justify-between">
         {/* Left side */}
         <div className="flex items-center gap-4 sm:gap-8 md:gap-12 lg:gap-16 xl:gap-24">
           {/* Logo */}
@@ -65,7 +65,7 @@ export default function Header() {
       </div>
 
       {/* Bottom navigation section */}
-      <div className="max-w-[1920px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-2 sm:py-3 md:py-4 overflow-x-auto">
+      <div className="max-w-[1280px] mx-auto px-4 md:px-12 py-2 sm:py-3 md:py-4 overflow-x-auto">
         <div className="flex justify-between items-center">
           <NavigationMenu>
             <NavigationMenuList className="flex gap-6 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24 min-w-max">

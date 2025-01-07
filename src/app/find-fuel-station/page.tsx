@@ -22,25 +22,18 @@ export default function FindFuelStation() {
       setMapCenter([lng, lat]);
       setHasSearched(true);
       
-      console.log('Fetching stations for:', { lat, lng }); // Debug log
-      
       const response = await fetch(`/find-fuel-station/api/stations?lat=${lat}&lng=${lng}`);
       
       if (!response.ok) {
-        const errorData = await response.text();
-        console.error('API Error Response:', errorData);
         throw new Error('Failed to fetch stations');
       }
 
       const data = await response.json();
-      console.log('API Response:', data);
-
       if (data.stations) {
         setStations(data.stations);
       } else {
         setStations([]);
       }
-      
     } catch (error) {
       console.error('Error:', error);
       setError(error instanceof Error ? error.message : 'Failed to fetch stations');
@@ -51,13 +44,16 @@ export default function FindFuelStation() {
   };
 
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen flex flex-col bg-white">
       <Header />
       
       {/* Hero Section */}
-      <section className="relative py-32 px-12 overflow-hidden">
+      <section className="relative h-[200px] overflow-hidden">
         <div 
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 bg-gradient-to-r from-[#F36F21] to-[#FFC42E]"
+        />
+        <div 
+          className="absolute inset-0 z-10 opacity-20"
           style={{
             backgroundImage: "url('/images/banner.png')",
             backgroundSize: 'cover',
@@ -65,59 +61,70 @@ export default function FindFuelStation() {
           }}
         />
         
-        <div className="max-w-[1920px] mx-auto relative z-10 mt-8">
-          <h1 className="text-8xl font-bold text-white tracking-wide relative drop-shadow-[10px_24px_1px_rgba(0,0,0,0.3)]">
-            Find a fuel station near you
-          </h1>
+        <div className="max-w-[1280px] h-full mx-auto px-4 md:px-12 flex items-center relative z-20">
+          <div className="w-full max-w-[780px] h-[75px] flex items-center">
+            <h1 className="text-4xl md:text-5xl font-bold text-white">
+              Find a fuel station near you
+            </h1>
+          </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <div className="w-full px-12 py-8 relative bg-split">
-        <div className="relative z-10">
-          <div className="grid grid-cols-3 gap-8">
-            {/* Empty first column */}
-            <div></div>
-
-            {/* Search and Results - Middle Column */}
-            <div className="flex flex-col">
-              <div className="w-full mb-8">
-                <SearchBar onLocationSelect={handleLocationSelect} />
-                {error && (
-                  <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg text-2xl">
-                    {error}
-                  </div>
-                )}
-                {loading && (
-                  <div className="mt-4 text-center text-2xl">
-                    Loading stations...
-                  </div>
-                )}
+      <div className="w-full bg-white relative">
+        {/* White background with diagonal cut */}
+        <div className="absolute inset-0 bg-white" />
+        
+        {/* Diagonal gradient background */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(45deg, #F36F21, #FFC42E)',
+            clipPath: 'polygon(0 100%, 100% 0, 100% 100%)',
+          }}
+        />
+        
+        <div className="max-w-[1280px] mx-auto px-4 md:px-12 py-8 relative z-10">
+          {/* Search Bar Section */}
+          <div className="max-w-[400px]">
+            <SearchBar onLocationSelect={handleLocationSelect} />
+            {error && (
+              <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
+                {error}
               </div>
-
-              <div className="w-full space-y-4 overflow-y-auto">
-                {stations.length > 0 ? (
-                  selectedStation ? (
-                    <StationCard {...selectedStation} />
-                  ) : (
-                    stations.map((station) => (
-                      <StationCard 
-                        key={station._id} 
-                        {...station} 
-                        onClick={() => setSelectedStation(station)}
-                      />
-                    ))
-                  )
-                ) : !loading && hasSearched && (
-                  <div className="text-center p-4 text-gray-500 text-2xl">
-                    No stations found in this area
-                  </div>
-                )}
+            )}
+            {loading && (
+              <div className="mt-4 text-center">
+                Loading stations...
               </div>
+            )}
+          </div>
+
+          {/* Content Grid */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-8">
+            {/* Results Section */}
+            <div className="flex flex-col space-y-4">
+              {stations.length > 0 ? (
+                selectedStation ? (
+                  <StationCard {...selectedStation} />
+                ) : (
+                  stations.map((station) => (
+                    <StationCard 
+                      key={station._id} 
+                      {...station} 
+                      onClick={() => setSelectedStation(station)}
+                    />
+                  ))
+                )
+              ) : !loading && hasSearched && (
+                <div className="text-center p-4">
+                  No stations found in this area
+                </div>
+              )}
             </div>
 
-            {/* Map Section - Last Column */}
-            <div className="bg-gray-100 rounded-3xl relative h-[400px]"> 
+            {/* Map Section */}
+            <div className="bg-white rounded-xl overflow-hidden h-[400px] border-2 border-black">
               <MapControls 
                 stations={stations}
                 center={mapCenter}
