@@ -4,7 +4,7 @@ import { useState } from 'react';
 import SearchBar from "./components/SearchBar";
 import StationCard from "./components/StationCard";
 import MapControls from "./components/MapControls";
-import Header from "@/components/Header";
+import Header from "./components/Header";
 import Footer from "@/components/Footer";
 
 export default function FindFuelStation() {
