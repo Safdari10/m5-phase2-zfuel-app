@@ -47,21 +47,21 @@ const PriceDisplay = () => {
           <img src="/priceComparison/91.png" alt="91 logo" className="p-5 ml-2" />
           <img src="/priceComparison/Vector.png" alt="z logo" className="ml-28" />
           <div className="bg-[#00732E] w-[168px] font-semibold text-[14px] text-white text-center mt-6 mx-7 rounded-md">
-            {prices ? <span className="py-6">{prices.fuel91}</span> : <span className="py-6">Price 1</span>}
+            {prices ? <span className="py-6">${prices.fuel91.toFixed(2)} per litre</span> : <span className="py-6">Price 1</span>}
           </div>
         </div>
         <div className="mb-10 sm:mb-0 w-[209px] h-[209px] rounded-xl shadow-lg bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
           <img src="/priceComparison/95.png" alt="95 logo" className="p-5 ml-2" />
           <img src="/priceComparison/Vector.png" alt="z logo" className="ml-28" />
           <div className="bg-[#E65F24] w-[168px] font-semibold text-[14px] text-white text-center mt-6 mx-7 rounded-md">
-            {prices ? <span className="py-6">{prices.fuel95}</span> : <span className="py-6">Price 2</span>}
+            {prices ? <span className="py-6">${prices.fuel95.toFixed(2)} per litre</span> : <span className="py-6">Price 2</span>}
           </div>
         </div>
         <div className="mb-10 sm:mb-0 w-[209px] h-[209px] rounded-xl shadow-lg bg-gradient-to-r from-[#F37120] via-[#F68C19] to-[#FFDD02]">
           <img src="/priceComparison/D.png" alt="diesel logo" className="p-5 ml-2" />
           <img src="/priceComparison/Vector.png" alt="z logo" className="ml-28" />
           <div className="w-[168px] font-semibold text-[14px] text-white text-center mt-6 mx-7 rounded-md bg-gradient-to-r from-[#1E196B] via-[#2C238A] to-[#3129AB]">
-            {prices ? <span className="py-6">{prices.diesel}</span> : <span className="py-6">Price 3</span>}
+            {prices ? <span className="py-6">${prices.diesel.toFixed(2)} per litre</span> : <span className="py-6">Price 3</span>}
           </div>
         </div>
       </div>
