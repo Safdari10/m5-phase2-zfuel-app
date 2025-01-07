@@ -20,7 +20,7 @@ const PriceComparisonPage = () => {
           />
         </div>
         <h1 className="text-[#1E196B] font-bold text-[20px] ml-10 mt-24 sm:ml-24 mb-32">
-          Compare Price Across Stations
+          Compare Prices Across Stations
         </h1>
         <div className="mb-96">
           <PriceDisplay />

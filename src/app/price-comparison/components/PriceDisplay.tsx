@@ -32,7 +32,7 @@ const PriceDisplay = () => {
           placeholder="Enter address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
-          className="p-4 bg-gray-50 w-[330px] text-[15px] font-light rounded-lg shadow-lg"
+          className="p-4 bg-gray-50 w-[330px] text-[15px] font-light rounded-lg shadow-lg focus:outline-none"
         />
         <button
           onClick={handleSearch}
