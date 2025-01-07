@@ -13,10 +13,10 @@ interface StationCardProps {
 }
 
 const serviceIcons: { [key: string]: React.ReactElement } = {
-  Shop: <Store className="text-white" />,
-  Fuel: <Fuel className="text-white" />,
-  "Car Wash": <Car className="text-white" />,
-  Air: <Wind className="text-white" />
+  Shop: <Store className="text-green-500" />,
+  Fuel: <Fuel className="text-green-500" />,
+  "Car Wash": <Car className="text-green-500" />,
+  Air: <Wind className="text-green-500" />
 };
 
 export default function StationCard({
@@ -30,7 +30,7 @@ export default function StationCard({
   return (
     <div 
       onClick={onClick}
-      className="bg-gradient-to-r from-[#FFC42E] to-[#F36F21] p-6 rounded-xl cursor-pointer shadow-lg"
+      className="bg-gradient-to-r from-[#F36F21] to-[#FFC42E] p-6 rounded-xl cursor-pointer shadow-lg"
     >
       <h3 className="text-xl font-bold text-white mb-2">{name}</h3>
       <p className="text-white/90 text-sm mb-4">{address}</p>
@@ -41,7 +41,7 @@ export default function StationCard({
           <div className="flex flex-wrap gap-2">
             {services.map((service) => (
               <div key={service} 
-                className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
+                className="w-8 h-8 flex items-center justify-center"
               >
                 {serviceIcons[service]}
               </div>
