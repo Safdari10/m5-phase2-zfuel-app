@@ -150,7 +150,7 @@ export default function FindFuelStation() {
             </div>
 
             {/* Map Section - Desktop Only */}
-            <div className="hidden md:block w-[600px] aspect-square overflow-hidden">
+            <div className="hidden md:block w-[600px] h-[400px] overflow-hidden rounded-3xl">
               <MapControls 
                 stations={stations}
                 center={mapCenter}
