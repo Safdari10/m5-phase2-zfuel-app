@@ -52,7 +52,7 @@ export default function FindFuelStation() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-[200px] overflow-hidden">
+      <section className="relative h-[150px] overflow-hidden">
         <div 
           className="absolute inset-0 z-0 bg-gradient-to-r from-[#F36F21] to-[#FFC42E]"
         />
@@ -66,9 +66,9 @@ export default function FindFuelStation() {
         />
         
         <div className="max-w-[1280px] h-full mx-auto px-4 md:px-12 flex items-center relative z-20">
-          <div className="w-full max-w-[780px] h-[75px] flex items-center">
+          <div className="w-full max-w-[780px] flex items-center">
             <h1 
-              className="text-4xl md:text-6xl font-roboto font-bold text-white"
+              className="text-6xl md:text-8xl font-roboto font-bold text-white"
               style={{ textShadow: '24px 14px 4px rgba(0, 0, 0, 0.5)' }}
             >
               Find a fuel station near you
@@ -123,7 +123,7 @@ export default function FindFuelStation() {
               </div>
 
               {/* Map Section - Mobile Only */}
-              <div className="mt-4 md:hidden w-full aspect-square rounded-xl border-1 border-black overflow-hidden relative z-20">
+              <div className="mt-4 md:hidden w-full aspect-square overflow-hidden relative z-20">
                 <MapControls 
                   stations={stations}
                   center={mapCenter}
@@ -157,7 +157,7 @@ export default function FindFuelStation() {
             </div>
 
             {/* Map Section - Desktop Only */}
-            <div className="hidden md:block w-[600px] aspect-square rounded-xl border-2 border-black overflow-hidden">
+            <div className="hidden md:block w-[600px] aspect-square overflow-hidden">
               <MapControls 
                 stations={stations}
                 center={mapCenter}
