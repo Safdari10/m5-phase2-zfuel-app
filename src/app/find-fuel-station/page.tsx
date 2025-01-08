@@ -52,24 +52,17 @@ export default function FindFuelStation() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-[150px] overflow-hidden">
-        <div 
-          className="absolute inset-0 z-0 bg-gradient-to-r from-[#F36F21] to-[#FFC42E]"
-        />
-        <div 
-          className="absolute inset-0 z-10 opacity-20"
-          style={{
-            backgroundImage: "url('/images/banner.png')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        
-        <div className="max-w-[1280px] h-full mx-auto px-4 md:px-12 flex items-center relative z-20">
+      <section 
+        className="relative h-[150px] overflow-hidden bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/banner.png')",
+        }}
+      >
+        <div className="max-w-[1280px] h-full mx-auto px-4 md:px-12 flex items-center">
           <div className="w-full max-w-[780px] flex items-center">
             <h1 
               className="text-6xl md:text-8xl font-roboto font-bold text-white"
-              style={{ textShadow: '24px 14px 4px rgba(0, 0, 0, 0.5)' }}
+              style={{ textShadow: '16px 16px 3px rgba(0, 0, 0, 0.5)' }}
             >
               Find a fuel station near you
             </h1>
