@@ -72,7 +72,7 @@ export function SearchBar({
             <button
               key={suggestion.id}
               onClick={() => handleSelectLocation(suggestion)}
-              className="w-full px-4 py-2 text-left hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
+              className="w-full px-4 py-2 text-left text-2xl hover:bg-gray-100 focus:bg-gray-100 focus:outline-none"
             >
               {suggestion.place_name}
             </button>
