@@ -9,6 +9,7 @@ interface StationCardProps {
     [key: string]: string;
   };
   services: string[];
+  onClick?: () => void;
 }
 
 const serviceIcons: { [key: string]: React.ReactElement } = {
@@ -24,53 +25,47 @@ export default function StationCard({
   phone,
   hours,
   services,
+  onClick
 }: StationCardProps) {
   return (
-    <div className="relative">
-      {/* Main card */}
-      <div className="bg-gradient-to-r from-[#F36F21] to-[#FFC42E] p-4 rounded-xl text-white 
-        relative max-w-[400px]"
-      >
-        {/* Content */}
-        <div className="flex justify-between gap-4">
-          <div className="w-[60%]">
-            <h2 className="text-xl font-bold mb-1">{name}</h2>
-            <p className="text-sm mb-3">{address}</p>
-            
-            <div className="space-y-3">
-              <div>
-                <p className="text-sm font-semibold mb-2">Services Offered</p>
-                <div className="flex gap-2">
-                  {services.map((service) => (
-                    <div key={service} 
-                      className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center"
-                    >
-                      {React.cloneElement(serviceIcons[service] as React.ReactElement, {
-                        className: "w-5 h-5 text-green-500"
-                      })}
-                    </div>
-                  ))}
-                </div>
-              </div>
-              
-              <div>
-                <p className="text-sm font-semibold mb-2">Contact Store</p>
-                <p className="text-sm">{phone}</p>
-              </div>
-            </div>
-          </div>
-          
-          {/* Hours */}
-          <div className="w-[40%] text-sm">
-            <p className="font-semibold mb-2">Hours</p>
-            <div className="space-y-1">
-              {Object.entries(hours).map(([day, time]) => (
-                <div key={day} className="flex justify-between">
-                  <span>{day}</span>
-                  <span>{time}</span>
+    <div 
+      onClick={onClick}
+      className="bg-gradient-to-r from-[#F36F21] to-[#FFC42E] p-6 rounded-xl cursor-pointer shadow-lg w-[465px]"
+    >
+      <h3 className="text-xl font-bold text-white mb-2">{name}</h3>
+      <p className="text-white/90 text-sm mb-4">{address}</p>
+      
+      <div className="grid grid-cols-2 gap-4">
+        {/* Left Column - Services and Contact */}
+        <div className="space-y-4">
+          <div>
+            <p className="text-white font-semibold mb-2 text-sm">Services Offered</p>
+            <div className="flex flex-wrap gap-2">
+              {services.map((service) => (
+                <div key={service} 
+                  className="w-8 h-8 flex items-center justify-center"
+                >
+                  {serviceIcons[service]}
                 </div>
               ))}
             </div>
+          </div>
+
+          <div>
+            <p className="text-white font-semibold mb-2 text-sm">Contact Store</p>
+            <p className="text-white/90 text-sm">{phone}</p>
+          </div>
+        </div>
+
+        {/* Right Column - Hours */}
+        <div>
+          <div className="text-sm text-white/90">
+            {Object.entries(hours).map(([day, time]) => (
+              <div key={day} className="flex gap-8">
+                <span className="w-8">{day}</span>
+                <span>{time}</span>
+              </div>
+            ))}
           </div>
         </div>
       </div>

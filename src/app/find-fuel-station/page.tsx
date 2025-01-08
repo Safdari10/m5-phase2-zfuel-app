@@ -4,8 +4,8 @@ import { useState } from 'react';
 import SearchBar from "./components/SearchBar";
 import StationCard from "./components/StationCard";
 import MapControls from "./components/MapControls";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 export default function FindFuelStation() {
   const [stations, setStations] = useState<any[]>([]);
@@ -22,25 +22,18 @@ export default function FindFuelStation() {
       setMapCenter([lng, lat]);
       setHasSearched(true);
       
-      console.log('Fetching stations for:', { lat, lng }); // Debug log
-      
       const response = await fetch(`/find-fuel-station/api/stations?lat=${lat}&lng=${lng}`);
       
       if (!response.ok) {
-        const errorData = await response.text();
-        console.error('API Error Response:', errorData);
         throw new Error('Failed to fetch stations');
       }
 
       const data = await response.json();
-      console.log('API Response:', data);
-
       if (data.stations) {
         setStations(data.stations);
       } else {
         setStations([]);
       }
-      
     } catch (error) {
       console.error('Error:', error);
       setError(error instanceof Error ? error.message : 'Failed to fetch stations');
@@ -50,14 +43,21 @@ export default function FindFuelStation() {
     }
   };
 
+  const handleStationSelect = (station: any) => {
+    setSelectedStation(station);
+  };
+
   return (
-    <main className="min-h-screen flex flex-col">
+    <main className="min-h-screen flex flex-col bg-white">
       <Header />
       
       {/* Hero Section */}
-      <section className="relative py-32 px-12 overflow-hidden">
+      <section className="relative h-[200px] overflow-hidden">
         <div 
-          className="absolute inset-0 z-0"
+          className="absolute inset-0 z-0 bg-gradient-to-r from-[#F36F21] to-[#FFC42E]"
+        />
+        <div 
+          className="absolute inset-0 z-10 opacity-20"
           style={{
             backgroundImage: "url('/images/banner.png')",
             backgroundSize: 'cover',
@@ -65,59 +65,83 @@ export default function FindFuelStation() {
           }}
         />
         
-        <div className="max-w-[1920px] mx-auto relative z-10 mt-8">
-          <h1 className="text-8xl font-bold text-white tracking-wide relative drop-shadow-[10px_24px_1px_rgba(0,0,0,0.3)]">
-            Find a fuel station near you
-          </h1>
+        <div className="max-w-[1280px] h-full mx-auto px-4 md:px-12 flex items-center relative z-20">
+          <div className="w-full max-w-[780px] h-[75px] flex items-center">
+            <h1 
+              className="text-4xl md:text-6xl font-roboto font-bold text-white"
+              style={{ textShadow: '24px 14px 4px rgba(0, 0, 0, 0.5)' }}
+            >
+              Find a fuel station near you
+            </h1>
+          </div>
         </div>
       </section>
 
       {/* Main Content */}
-      <div className="w-full px-12 py-8 relative bg-split">
-        <div className="relative z-10">
-          <div className="grid grid-cols-3 gap-8">
-            {/* Empty first column */}
-            <div></div>
-
-            {/* Search and Results - Middle Column */}
-            <div className="flex flex-col">
-              <div className="w-full mb-8">
+      <div className="w-full relative">
+        {/* Gradient background */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'linear-gradient(45deg, #F36F21, #FFC42E)',
+          }}
+        />
+        
+        {/* White overlay with curve */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'white',
+            clipPath: 'polygon(0 0, 100% 0, 100% 10%, 0 100%)'
+          }}
+        />
+        
+        <div className="max-w-[1280px] mx-auto px-4 md:px-12 relative z-10 mt-16 pb-16">
+          <div className="flex justify-between items-start">
+            {/* Left Column */}
+            <div className="w-[465px]">
+              {/* Search Bar Section */}
+              <div>
                 <SearchBar onLocationSelect={handleLocationSelect} />
                 {error && (
-                  <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg text-2xl">
+                  <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
                     {error}
                   </div>
                 )}
                 {loading && (
-                  <div className="mt-4 text-center text-2xl">
+                  <div className="mt-4">
                     Loading stations...
                   </div>
                 )}
               </div>
 
-              <div className="w-full space-y-4 overflow-y-auto">
-                {stations.length > 0 ? (
-                  selectedStation ? (
-                    <StationCard {...selectedStation} />
-                  ) : (
-                    stations.map((station) => (
+              {/* Results Section */}
+              <div className="flex flex-col space-y-4 mt-4">
+                {hasSearched ? (
+                  stations.length > 0 ? (
+                    selectedStation ? (
                       <StationCard 
-                        key={station._id} 
-                        {...station} 
-                        onClick={() => setSelectedStation(station)}
+                        key="selected-station"
+                        {...selectedStation} 
                       />
-                    ))
+                    ) : (
+                      stations.map((station) => (
+                        <StationCard
+                          key={station.id || station._id?.toString()}
+                          {...station}
+                          onClick={() => handleStationSelect(station)}
+                        />
+                      ))
+                    )
+                  ) : (
+                    <div key="no-results" className="text-gray-500 text-xl">No stations found. Try a different location.</div>
                   )
-                ) : !loading && hasSearched && (
-                  <div className="text-center p-4 text-gray-500 text-2xl">
-                    No stations found in this area
-                  </div>
-                )}
+                ) : null}
               </div>
             </div>
 
-            {/* Map Section - Last Column */}
-            <div className="bg-gray-100 rounded-3xl relative h-[400px]"> 
+            {/* Map Section */}
+            <div className="w-[600px] overflow-hidden h-[400px] rounded-xl border-2 border-black">
               <MapControls 
                 stations={stations}
                 center={mapCenter}

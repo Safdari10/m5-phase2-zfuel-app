@@ -13,6 +13,17 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 export default function Header() {
+  const navLinks = [
+    { href: "/z-app", text: "Z App" },
+    { href: "/about-z", text: "About Z" }
+  ];
+
+  const bottomNavLinks = [
+    { href: "/how-to-enjoy", text: "How to enjoy Z station" },
+    { href: "/rewards", text: "Reward and promotion" },
+    { href: "/locations", text: "Location" }
+  ];
+
   return (
     <header className="w-full">
       {/* Top section */}
@@ -38,8 +49,15 @@ export default function Header() {
 
         {/* Right side */}
         <div className="flex items-center gap-4 sm:gap-6 md:gap-8 lg:gap-12 xl:gap-16">
-          <Link href="/z-app" className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium hidden sm:block">Z App</Link>
-          <Link href="/about-z" className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium hidden sm:block">About Z</Link>
+          {navLinks.map((link) => (
+            <Link 
+              key={link.href}
+              href={link.href} 
+              className="text-base sm:text-lg md:text-xl lg:text-2xl font-medium hidden sm:block"
+            >
+              {link.text}
+            </Link>
+          ))}
           {/* Cart Icon */}
           <Link href="/cart" className="p-1 sm:p-2">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -69,43 +87,18 @@ export default function Header() {
         <div className="flex justify-between items-center">
           <NavigationMenu>
             <NavigationMenuList className="flex gap-6 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24 min-w-max">
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-base sm:text-lg md:text-xl whitespace-nowrap">How to enjoy Z station</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <NavigationMenuLink asChild>
-                    <Link href="/how-to-enjoy">Guidelines</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-base sm:text-lg md:text-xl whitespace-nowrap">Reward and promotion</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <NavigationMenuLink asChild>
-                    <Link href="/rewards">Offers</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <NavigationMenuTrigger className="text-base sm:text-lg md:text-xl whitespace-nowrap">Location</NavigationMenuTrigger>
-                <NavigationMenuContent>
-                  <NavigationMenuLink asChild>
-                    <Link href="/locations">Nearby Stations</Link>
-                  </NavigationMenuLink>
-                </NavigationMenuContent>
-              </NavigationMenuItem>
+              {bottomNavLinks.map((link) => (
+                <NavigationMenuItem key={link.href}>
+                  <NavigationMenuTrigger className="text-base sm:text-lg md:text-xl whitespace-nowrap">{link.text}</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                    <NavigationMenuLink asChild>
+                      <Link href={link.href}>{link.text}</Link>
+                    </NavigationMenuLink>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+              ))}
             </NavigationMenuList>
           </NavigationMenu>
-
-          <Link href="/create-account">
-            <Button className="bg-[#1E196B] text-white hover:bg-[#161450] text-base sm:text-lg md:text-xl lg:text-2xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 h-10 sm:h-12 rounded-lg flex items-center gap-2 sm:gap-3 md:gap-4 whitespace-nowrap">
-              Create Account
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-              </svg>
-            </Button>
-          </Link>
         </div>
       </div>
     </header>
