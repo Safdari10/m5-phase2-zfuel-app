@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import SearchBar from "./components/SearchBar";
+import { SearchBar } from "@/components/SearchBar";
 import StationCard from "./components/StationCard";
 import MapControls from "./components/MapControls";
 import Header from "./components/Header";
