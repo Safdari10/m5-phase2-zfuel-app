@@ -96,12 +96,12 @@ export default function FindFuelStation() {
           }}
         />
         
-        <div className="max-w-[1280px] mx-auto px-4 md:px-12 relative z-10 mt-16 pb-16">
-          <div className="flex justify-between items-start">
-            {/* Left Column */}
-            <div className="w-[465px]">
+        <div className="max-w-[1280px] mx-auto px-4 md:px-12 relative z-10 mt-8 md:mt-16 pb-8 md:pb-16">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 md:gap-8">
+            {/* Search and Results Column */}
+            <div className="w-full md:w-[465px] relative">
               {/* Search Bar Section */}
-              <div>
+              <div className="relative z-30">
                 <SearchBar onLocationSelect={handleLocationSelect} />
                 {error && (
                   <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
@@ -113,6 +113,22 @@ export default function FindFuelStation() {
                     Loading stations...
                   </div>
                 )}
+
+                {/* Search Results Overlay - Only show when there are suggestions */}
+                {!hasSearched && (
+                  <div className="absolute w-full z-40">
+                    {/* Search results will be rendered here by SearchBar component */}
+                  </div>
+                )}
+              </div>
+
+              {/* Map Section - Mobile Only */}
+              <div className="mt-4 md:hidden w-full aspect-square rounded-xl border-1 border-black overflow-hidden relative z-20">
+                <MapControls 
+                  stations={stations}
+                  center={mapCenter}
+                  onStationSelect={setSelectedStation}
+                />
               </div>
 
               {/* Results Section */}
@@ -140,8 +156,8 @@ export default function FindFuelStation() {
               </div>
             </div>
 
-            {/* Map Section */}
-            <div className="w-[600px] overflow-hidden h-[400px] rounded-xl border-2 border-black">
+            {/* Map Section - Desktop Only */}
+            <div className="hidden md:block w-[600px] aspect-square rounded-xl border-2 border-black overflow-hidden">
               <MapControls 
                 stations={stations}
                 center={mapCenter}
