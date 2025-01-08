@@ -57,7 +57,7 @@ const LoginPage: React.FC = () => {
       <Header />
       <main className="min-h-screen bg-white">
         {/* Header Banner */}
-        <section className="relative bg-gradient-to-r from-yellow-500 to-orange-400">
+        <section className="relative bg-gradient-to-r from-yellow-500 to-orange-400 text-center mx-auto max-w-[1920px]">
           <div className="relative">
             <Image
               src="/homepage-images/cabanner.png"

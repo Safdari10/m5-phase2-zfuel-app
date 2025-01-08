@@ -12,6 +12,9 @@ export async function POST(request: Request) {
     // Parse the incoming request body
     const { username, password } = await request.json();
 
+    console.log("Parsed username:", username);
+    console.log("Parsed password:", password);
+
     // Validate input
     if (!username || !password) {
       return NextResponse.json(
@@ -20,13 +23,8 @@ export async function POST(request: Request) {
       );
     }
 
-    // Find the user by email (since we're using email as username)
-    const user = await User.findOne({ 
-      $or: [
-        { email: username },    // Try matching email
-        { username: username }  // Also try matching username for flexibility
-      ]
-    });
+    // Find the user by email
+    const user = await User.findOne({ email: username }); // Changed to check by email
 
     if (!user) {
       return NextResponse.json(
