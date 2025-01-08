@@ -36,7 +36,13 @@ export async function GET(request: Request) {
     return NextResponse.json({
       success: true,
       count: stations.length,
-      stations: stations.map(station => station.toObject())
+      stations: stations.map(station => {
+        const stationObj = station.toObject();
+        return {
+          ...stationObj,
+          id: stationObj._id.toString() // Convert MongoDB _id to string id
+        };
+      })
     });
 
   } catch (error) {
