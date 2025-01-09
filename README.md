@@ -67,6 +67,64 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Team Collaboration & Shared Components
+
+### Component Sharing Guidelines
+
+Our team follows these practices for sharing and maintaining common components:
+
+#### Component Structure
+- All shared components are located in the `/src/components` directory
+- Each component should:
+  - Have its own directory with the component name
+  - Include a README.md explaining its usage
+  - Include proper TypeScript types
+  - Be properly tested
+
+#### Contribution Process
+1. **Creating New Components**
+   - Create a new branch: `feature/component-name`
+   - Follow the component structure guidelines
+   - Submit a PR with detailed description
+
+2. **Code Review Process**
+   - All components require at least one review
+   - Use GitHub's PR review features
+   - Address feedback in follow-up commits
+
+3. **Documentation**
+   - Update component README
+   - Include usage examples
+   - Document props and interfaces
+
+### GitHub Workflow
+
+1. **Branches**
+   - `main`: Production-ready code
+   - `develop`: Integration branch
+   - `feature/*`: New features/components
+   - `fix/*`: Bug fixes
+
+2. **Pull Requests**
+   - Use PR template
+   - Link related issues
+   - Add appropriate labels
+   - Request reviews from team members
+
+3. **Issues**
+   - Use issue templates
+   - Label appropriately
+   - Link to related PRs
+   - Update status regularly
+
+### Shared Components List
+
+Key shared components in `/src/components`:
+- `Button`: Common button styles and variants
+- `Footer`: Site-wide footer component
+- `Header`: Navigation and branding header
+- Add new components to this list when created
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -81,5 +139,4 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
 

@@ -40,11 +40,11 @@ export default function Footer() {
           <div className="flex-1 flex justify-between gap-16">
             {/* Products and Services */}
             <div>
-              <h3 className="text-[#1E196B] font-bold text-base sm:text-lg md:text-xl lg:text-2xl mb-6">Products and Services</h3>
+              <h3 className="text-[#1E196B] font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6">Products and Services</h3>
               <ul className="space-y-4">
                 {productsLinks.map((link) => (
                   <li key={link.text}>
-                    <a href={link.href} className="hover:underline text-base sm:text-lg md:text-xl lg:text-2xl">
+                    <a href={link.href} className="hover:underline text-lg sm:text-xl md:text-2xl lg:text-3xl">
                       {link.text}
                     </a>
                   </li>
@@ -54,11 +54,11 @@ export default function Footer() {
 
             {/* For Businesses */}
             <div>
-              <h3 className="text-[#1E196B] font-bold text-base sm:text-lg md:text-xl lg:text-2xl mb-6">For businesses</h3>
+              <h3 className="text-[#1E196B] font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6">For businesses</h3>
               <ul className="space-y-4">
                 {businessLinks.map((link) => (
                   <li key={link.text}>
-                    <a href={link.href} className="hover:underline text-base sm:text-lg md:text-xl lg:text-2xl">
+                    <a href={link.href} className="hover:underline text-lg sm:text-xl md:text-2xl lg:text-3xl">
                       {link.text}
                     </a>
                   </li>
@@ -68,11 +68,11 @@ export default function Footer() {
 
             {/* About Z */}
             <div>
-              <h3 className="text-[#1E196B] font-bold text-base sm:text-lg md:text-xl lg:text-2xl mb-6">About Z</h3>
+              <h3 className="text-[#1E196B] font-bold text-lg sm:text-xl md:text-2xl lg:text-3xl mb-6">About Z</h3>
               <ul className="space-y-4">
                 {aboutLinks.map((link) => (
                   <li key={link.text}>
-                    <a href={link.href} className="hover:underline text-base sm:text-lg md:text-xl lg:text-2xl">
+                    <a href={link.href} className="hover:underline text-lg sm:text-xl md:text-2xl lg:text-3xl">
                       {link.text}
                     </a>
                   </li>
@@ -83,7 +83,7 @@ export default function Footer() {
             {/* Contact Us */}
             <a
               href="/contact"
-              className="bg-[#FF6B00] text-white hover:bg-[#e66000] text-base sm:text-lg md:text-xl lg:text-2xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 h-10 sm:h-12 rounded-full flex items-center gap-2 sm:gap-3 md:gap-4 whitespace-nowrap font-roboto font-bold"
+              className="bg-[#FF6B00] text-white hover:bg-[#e66000] text-lg sm:text-xl md:text-2xl lg:text-3xl px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 h-10 sm:h-12 rounded-full flex items-center gap-2 sm:gap-3 md:gap-4 whitespace-nowrap font-roboto font-bold"
             >
               Contact us
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 sm:h-5 sm:w-5 md:h-6 md:w-6" viewBox="0 0 20 20" fill="currentColor">

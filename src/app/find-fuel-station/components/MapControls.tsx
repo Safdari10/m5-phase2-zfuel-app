@@ -24,7 +24,7 @@ export default function Map({ stations, center, onStationSelect }: MapProps) {
   const map = useRef<mapboxgl.Map | null>(null);
   const [zoom, setZoom] = useState(12);
   const [activeFilters, setActiveFilters] = useState<string[]>([]);
-  const markersRef = useRef<{ [key: string]: mapboxgl.Marker }>({});
+  const markersRef = useRef<{ [key: string]: mapboxgl.Marker }>( {});
 
   const toggleFilter = (filterId: string) => {
     setActiveFilters(prev => 
@@ -127,8 +127,8 @@ export default function Map({ stations, center, onStationSelect }: MapProps) {
   }, [stations, center, zoom]);
 
   return (
-    <div className="relative w-full h-[400px]">
-      <div ref={mapContainer} className="w-full h-full rounded-3xl" />
+    <div className="relative h-full w-full">
+      <div ref={mapContainer} className="w-full h-full" />
       
       {/* Zoom Controls */}
       <div className="absolute right-6 top-6 flex flex-col gap-3">

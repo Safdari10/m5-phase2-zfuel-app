@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from 'react';
-import SearchBar from "./components/SearchBar";
+import { SearchBar } from "@/components/SearchBar";
 import StationCard from "./components/StationCard";
 import MapControls from "./components/MapControls";
 import Header from "./components/Header";
@@ -52,24 +52,17 @@ export default function FindFuelStation() {
       <Header />
       
       {/* Hero Section */}
-      <section className="relative h-[200px] overflow-hidden">
-        <div 
-          className="absolute inset-0 z-0 bg-gradient-to-r from-[#F36F21] to-[#FFC42E]"
-        />
-        <div 
-          className="absolute inset-0 z-10 opacity-20"
-          style={{
-            backgroundImage: "url('/images/banner.png')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
-        />
-        
-        <div className="max-w-[1280px] h-full mx-auto px-4 md:px-12 flex items-center relative z-20">
-          <div className="w-full max-w-[780px] h-[75px] flex items-center">
+      <section 
+        className="relative h-[150px] overflow-hidden bg-cover bg-center"
+        style={{
+          backgroundImage: "url('/images/banner.png')",
+        }}
+      >
+        <div className="max-w-[1280px] h-full mx-auto px-4 md:px-12 flex items-center">
+          <div className="w-full max-w-[780px] flex items-center">
             <h1 
-              className="text-4xl md:text-6xl font-roboto font-bold text-white"
-              style={{ textShadow: '24px 14px 4px rgba(0, 0, 0, 0.5)' }}
+              className="text-6xl md:text-8xl font-roboto font-bold text-white"
+              style={{ textShadow: '16px 16px 3px rgba(0, 0, 0, 0.5)' }}
             >
               Find a fuel station near you
             </h1>
@@ -96,12 +89,12 @@ export default function FindFuelStation() {
           }}
         />
         
-        <div className="max-w-[1280px] mx-auto px-4 md:px-12 relative z-10 mt-16 pb-16">
-          <div className="flex justify-between items-start">
-            {/* Left Column */}
-            <div className="w-[465px]">
+        <div className="max-w-[1280px] mx-auto px-4 md:px-12 relative z-10 mt-8 md:mt-16 pb-8 md:pb-16">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-start gap-6 md:gap-8">
+            {/* Search and Results Column */}
+            <div className="w-full md:w-[465px] relative">
               {/* Search Bar Section */}
-              <div>
+              <div className="relative z-30">
                 <SearchBar onLocationSelect={handleLocationSelect} />
                 {error && (
                   <div className="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
@@ -113,6 +106,22 @@ export default function FindFuelStation() {
                     Loading stations...
                   </div>
                 )}
+
+                {/* Search Results Overlay - Only show when there are suggestions */}
+                {!hasSearched && (
+                  <div className="absolute w-full z-40">
+                    {/* Search results will be rendered here by SearchBar component */}
+                  </div>
+                )}
+              </div>
+
+              {/* Map Section - Mobile Only */}
+              <div className="mt-4 md:hidden w-full aspect-square overflow-hidden relative z-20">
+                <MapControls 
+                  stations={stations}
+                  center={mapCenter}
+                  onStationSelect={setSelectedStation}
+                />
               </div>
 
               {/* Results Section */}
@@ -134,14 +143,14 @@ export default function FindFuelStation() {
                       ))
                     )
                   ) : (
-                    <div key="no-results" className="text-gray-500 text-xl">No stations found. Try a different location.</div>
+                    <div key="no-results" className="text-gray-500 text-2xl">No stations found. Try a different location.</div>
                   )
                 ) : null}
               </div>
             </div>
 
-            {/* Map Section */}
-            <div className="w-[600px] overflow-hidden h-[400px] rounded-xl border-2 border-black">
+            {/* Map Section - Desktop Only */}
+            <div className="hidden md:block w-[600px] h-[400px] overflow-hidden rounded-3xl">
               <MapControls 
                 stations={stations}
                 center={mapCenter}
