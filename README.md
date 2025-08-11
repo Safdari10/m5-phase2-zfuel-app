@@ -1,85 +1,126 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ZFuel App
+
+ZFuel Finder & Price Comparison App is a modern web application for New Zealand drivers to quickly find nearby fuel stations, compare real-time fuel prices, and make informed decisions. Built with Next.js, TypeScript, and Tailwind CSS, it features a user-friendly interface, interactive map, and secure account management.
+
+## Features
+
+- **Find Fuel Stations:** Search for nearby fuel stations using location or address, with map integration and autocomplete.
+- **Price Comparison:** Instantly compare fuel prices (91, 95, Diesel) across stations in your area.
+- **Account Management:** Create an account and log in to personalize your experience.
+- **Modern UI:** Responsive design, reusable components, and accessibility best practices.
+- **Secure & Ethical:** User-initiated location search, no tracking without consent, and secure API endpoints.
+- **Collaboration Ready:** Modular codebase, clear documentation, and shared component library.
+
+---
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies:**
 
 ```bash
+pnpm install
+# or
+npm install
+# or
+yarn install
+```
+
+2. **Run the development server:**
+
+```bash
+pnpm dev
+# or
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
+
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+---
 
 ## Folder Structure
-```
-/root-directory
-  ├── .gitignore                  # Specifies files and directories to ignore in version control.
-  ├── eslint.config.mjs            # ESLint configuration file.
-  ├── next-env.d.ts               # TypeScript declaration file for Next.js.
-  ├── next.config.ts              # Configuration file for Next.js (with TypeScript support).
-  ├── package.json                # Contains project metadata and dependencies.
-  ├── pnpm-lock.yaml              # Lockfile for pnpm package manager.
-  ├── postcss.config.mjs          # PostCSS configuration file.
-  ├── README.md                   # Project documentation.
-  ├── tailwind.config.ts          # Tailwind CSS configuration file (typed with TypeScript).
-  ├── tsconfig.json               # TypeScript configuration file.
 
-  /src
-    ├── app/                       # Main application code
-    │   ├── create-account/        # Account creation feature
-    │   │   ├── api/               # API endpoints related to account creation
-    │   │   └── page.tsx           # Page component for account creation
-    │   ├── find-fuel-station/     # Find fuel station feature
-    │   │   ├── api/               # API endpoints related to fuel stations
-    │   │   ├── components/        # Components used in the find-fuel-station feature
-    │   │   └── page.tsx           # Page component for finding fuel stations
-    │   ├── home/                  # Home page feature
-    │   │   ├── components/        # Home page components
-    │   │   └── page.tsx           # Home page component
-    │   ├── login/                 # Login feature
-    │   │   ├── api/               # API endpoints related to login
-    │   │   └── page.tsx           # Page component for login
-    │   ├── price-comparison/      # Price comparison feature (no sub-components yet)
-    │   ├── styles/                # Global styles (Tailwind CSS and custom styles)
-    │   └── layout.tsx             # Root layout component
-    │
-    ├── components/                # Shared components across the app
-    │   ├── Button.tsx             # Button component
-    │   ├── Footer.tsx             # Footer component
-    │   └── Header.tsx             # Header component
-    │
-    ├── db/                        # Database-related code
-    │   └── connection.ts          # Database connection setup
-    │
-    ├── lib/                       # Utility functions and libraries
-    │   ├── loginFetch.ts          # Utility function for login API calls
-    │   ├── priceFetch.ts          # Utility function for price fetching API calls
-    │   └── stationFetch.ts        # Utility function for station fetching API calls
+```
+├── public/                  # Static assets (images, icons)
+├── src/
+│   ├── app/
+│   │   ├── create-account/  # Account creation (UI & API)
+│   │   ├── find-fuel-station/ # Find stations (UI, API, components, models)
+│   │   ├── home/            # Home page
+│   │   ├── login/           # Login (UI & API)
+│   │   ├── price-comparison/ # Price comparison (UI & API)
+│   │   └── styles/          # Global styles (Tailwind CSS)
+│   ├── components/          # Shared UI components (Button, Footer, Header, UI library)
+│   ├── db/                  # Database connection & models
+│   ├── hooks/               # Custom React hooks
+│   ├── lib/                 # Utility functions (API fetchers, helpers)
+├── package.json             # Project metadata & dependencies
+├── tailwind.config.ts       # Tailwind CSS config
+├── tsconfig.json            # TypeScript config
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Find Stations:** Go to "Find Fuel Station" to search by address or use your location (with consent).
+- **Compare Prices:** Use "Price Comparison" to view and compare fuel prices for different stations.
+- **Create Account / Login:** Register or log in for a personalized experience.
+- **Mobile Friendly:** The app is fully responsive and works on all devices.
+
+---
+
+## Team Collaboration & Shared Components
+
+### Component Sharing Guidelines
+
+- All shared components are in `/src/components`.
+- Each component has its own directory, README, and TypeScript types.
+- Add new shared components via feature branches and submit PRs for review.
+
+### GitHub Workflow
+
+1. **Branches:**
+
+- `main`: Production
+- `develop`: Integration
+- `feature/*`: New features/components
+- `fix/*`: Bug fixes
+
+2. **Pull Requests:**
+
+- Use PR templates, link issues, request reviews
+
+3. **Issues:**
+
+- Use templates, label, and update status
+
+### Shared Components List
+
+- `Button`: Common button styles and variants
+- `Footer`: Site-wide footer
+- `Header`: Navigation and branding
+- ...and more in `/src/components/ui/`
+
+---
+
+## Ethical & Design Principles
+
+- User privacy: No location tracking without consent
+- Accessibility and mobile-first design
+- Modular, reusable, and well-documented code
+
+---
 
 ## Learn More
 
-To learn more about Next.js, take a look at the following resources:
+- [Next.js Documentation](https://nextjs.org/docs)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+---
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-
-
+This project is for educational purposes (Mission Ready Level 5). See LICENSE for details.
